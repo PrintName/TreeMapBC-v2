@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9F9C3C49254B802A00A9E079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C48254B802A00A9E079 /* AppDelegate.swift */; };
 		9F9C3C4B254B802A00A9E079 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */; };
-		9F9C3C4D254B802A00A9E079 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C4C254B802A00A9E079 /* ViewController.swift */; };
+		9F9C3C4D254B802A00A9E079 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C4C254B802A00A9E079 /* MapViewController.swift */; };
 		9F9C3C50254B802A00A9E079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C3C4E254B802A00A9E079 /* Main.storyboard */; };
 		9F9C3C53254B802A00A9E079 /* TreeMapBCv2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C51254B802A00A9E079 /* TreeMapBCv2.xcdatamodeld */; };
 		9F9C3C55254B803000A9E079 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C3C54254B803000A9E079 /* Assets.xcassets */; };
@@ -20,7 +20,7 @@
 		9F9C3C45254B802A00A9E079 /* TreeMapBCv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeMapBCv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9C3C48254B802A00A9E079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9F9C3C4C254B802A00A9E079 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9F9C3C4C254B802A00A9E079 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9F9C3C4F254B802A00A9E079 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F9C3C52254B802A00A9E079 /* TreeMapBCv2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TreeMapBCv2.xcdatamodel; sourceTree = "<group>"; };
 		9F9C3C54254B803000A9E079 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 			children = (
 				9F9C3C48254B802A00A9E079 /* AppDelegate.swift */,
 				9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */,
-				9F9C3C4C254B802A00A9E079 /* ViewController.swift */,
+				9F9C3C4C254B802A00A9E079 /* MapViewController.swift */,
 				9F9C3C4E254B802A00A9E079 /* Main.storyboard */,
 				9F9C3C54254B803000A9E079 /* Assets.xcassets */,
 				9F9C3C56254B803000A9E079 /* LaunchScreen.storyboard */,
@@ -141,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F9C3C4D254B802A00A9E079 /* ViewController.swift in Sources */,
+				9F9C3C4D254B802A00A9E079 /* MapViewController.swift in Sources */,
 				9F9C3C49254B802A00A9E079 /* AppDelegate.swift in Sources */,
 				9F9C3C4B254B802A00A9E079 /* SceneDelegate.swift in Sources */,
 				9F9C3C53254B802A00A9E079 /* TreeMapBCv2.xcdatamodeld in Sources */,
