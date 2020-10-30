@@ -8,14 +8,12 @@
 
 import UIKit
 import CoreData
-import MapKit
-import SwiftCSV
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    preloadTreeData()
     return true
   }
   
@@ -77,46 +75,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
     }
   }
-  
-  func parseBCTreesCSV() -> [(tag: String, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, status: String, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] {
-    // Load CSV file into Tree Data Array
-    var treeDataArray: [(tag: String, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, status: String, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] = []
-    let filePath = Bundle.main.url(forResource: "BCTrees", withExtension: "csv")!
-    do {
-      let csvFile: CSV = try CSV(url: filePath)
-      let rows = csvFile.enumeratedRows
-      for row in rows {
-        let tag = row[0]
-        let latitude = Double(row[1])!
-        let longitude = Double(row[2])!
-        let commonName = row[3]
-        let botanicalName = row[4]
-        let campus = row[5]
-        let dbh = Int(row[6])!
-        let status = row[7]
-        let carbonOffset = Double(row[8])!
-        let distanceDriven = carbonOffset * 2.475
-        let carbonStorage = Double(row[9])!
-        let pollutionRemoved = Double(row[10])!
-        let waterIntercepted = Double(row[11])! * 7.48052
-        let treeData = (tag: tag, latitude: latitude, longitude: longitude, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, status: status, carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted)
-        treeDataArray.append(treeData)
-      }
-    } catch {
-      print("❗️ERROR: CSV file is incorrectly formatted.")
-    }
-    return treeDataArray
-  }
 }
-
-
-  // Populate Tree Array with Tree Data Array
-//  var treeArray = [Tree]()
-//  for treeData in treeDataArray {
-//    if treeData[7] == "Living" {
-//      let treeName = treeData[3]
-//      let tree = Tree(title: treeName, detail: treeData, coordinate: CLLocationCoordinate2D(latitude: Double(treeData[1])!, longitude: Double(treeData[2])!))
-//      treeArray.append(tree)
-//    }
-//  }
-//  return treeArray
