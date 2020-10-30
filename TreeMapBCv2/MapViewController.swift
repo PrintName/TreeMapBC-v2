@@ -17,8 +17,11 @@ class MapViewController: UIViewController {
     super.viewDidLoad()
     configureMapView()
     
-    let tree = Tree(coordinate: CLLocationCoordinate2D(latitude: 42.3361, longitude: -71.1677))
-    mapView.addAnnotation(tree)
+    let tree1 = Tree(coordinate: CLLocationCoordinate2D(latitude: 42.3361, longitude: -71.1677))
+    let tree2 = Tree(coordinate: CLLocationCoordinate2D(latitude: 42.3361, longitude: -71.1679))
+    let tree3 = Tree(coordinate: CLLocationCoordinate2D(latitude: 42.3361, longitude: -71.1671))
+    mapView.addAnnotations([tree1, tree2, tree3])
+    print("DONE")
   }
   
   func configureMapView() {
@@ -27,8 +30,10 @@ class MapViewController: UIViewController {
     let initialLocation = CLLocation(latitude: 42.3361, longitude: -71.1677)
     let initialRegion = MKCoordinateRegion(center: initialLocation.coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01))
     mapView.setRegion(initialRegion, animated: false)
+    
+    mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+    mapView.register(ClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
   }
-  
 
 }
 
