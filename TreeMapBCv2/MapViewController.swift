@@ -16,6 +16,9 @@ class MapViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureMapView()
+    
+    let tree = Tree(coordinate: CLLocationCoordinate2D(latitude: 42.3361, longitude: -71.1677))
+    mapView.addAnnotation(tree)
   }
   
   func configureMapView() {
