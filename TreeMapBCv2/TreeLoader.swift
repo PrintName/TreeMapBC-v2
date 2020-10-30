@@ -42,25 +42,25 @@ extension UIApplicationDelegate {
       let rows = csvFile.enumeratedRows
       for row in rows {
         let tag = row[0]
-        let latitude = Double(row[1])!
-        let longitude = Double(row[2])!
+        let latitude = Double(row[1]) ?? 0.0
+        let longitude = Double(row[2]) ?? 0.0
         let commonName = row[3]
         let botanicalName = row[4]
         let campus = row[5]
-        let dbh = Int(row[6])!
+        let dbh = Int(row[6]) ?? 0
         let status = row[7]
-        let carbonOffset = Double(row[8])!
+        let carbonOffset = Double(row[8]) ?? 0
         let distanceDriven = carbonOffset * 2.475
-        let carbonStorage = Double(row[9])!
-        let pollutionRemoved = Double(row[10])!
-        let waterIntercepted = Double(row[11])! * 7.48052
+        let carbonStorage = Double(row[9]) ?? 0
+        let pollutionRemoved = Double(row[10]) ?? 0
+        let waterIntercepted = (Double(row[11]) ?? 0) * 7.48052
         if status == "Living" {
           let treeData = (tag: tag, latitude: latitude, longitude: longitude, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, status: status, carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted)
           treeDataArray.append(treeData)
         }
       }
     } catch {
-      print("❗️ERROR: CSV file is incorrectly formatted❗️")
+      print("❗️ERROR: Missing CSV file❗️")
     }
     return treeDataArray
   }
