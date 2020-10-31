@@ -15,7 +15,10 @@ class TreeAnnotationView: MKMarkerAnnotationView {
   
   override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
     super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-    clusteringIdentifier = "tree"
+    collisionMode = .circle
+    titleVisibility = .hidden
+    subtitleVisibility = .hidden
+    canShowCallout = true
   }
   
   required init?(coder aDecoder: NSCoder) {

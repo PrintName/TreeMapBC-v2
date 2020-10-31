@@ -11,8 +11,10 @@ import MapKit
 import CoreData
 
 class MapViewController: UIViewController {
-
   @IBOutlet weak var mapView: MKMapView!
+  
+  var annotationClustering = true
+  var treeAnnotationArray = [TreeAnnotation]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -20,6 +22,7 @@ class MapViewController: UIViewController {
   }
   
   func configureMapView() {
+    mapView.delegate = self
     mapView.mapType = .satellite
     
     let initialLocation = CLLocation(latitude: 42.3361, longitude: -71.1677)
@@ -31,7 +34,7 @@ class MapViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    let treeAnnotationArray = createTreeAnnotations()
+    treeAnnotationArray = createTreeAnnotations()
     mapView.addAnnotations(treeAnnotationArray)
   }
   
@@ -58,7 +61,7 @@ class MapViewController: UIViewController {
         let carbonStorage = object.value(forKey: "carbonStorage") as! Double
         let pollutionRemoved = object.value(forKey: "pollutionRemoved") as! Double
         let waterIntercepted = object.value(forKey: "waterIntercepted") as! Double
-        let treeAnnotation = TreeAnnotation(tag: tag, coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted)
+        let treeAnnotation = TreeAnnotation(title: commonName, subtitle: botanicalName, tag: tag, coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted)
         treeAnnotationArray.append(treeAnnotation)
       }
     } catch let error as NSError {
@@ -69,3 +72,24 @@ class MapViewController: UIViewController {
 
 }
 
+extension MapViewController: MKMapViewDelegate {
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    let annotationView: MKAnnotationView
+    if annotationClustering == true {
+      annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)!
+      annotationView.clusteringIdentifier = "tree"
+    } else {
+      annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)!
+      annotationView.clusteringIdentifier = nil
+    }
+    return nil //return annotationView
+  }
+  
+  func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    if (mapView.region.span.latitudeDelta < 0.002) {
+      annotationClustering = false
+      mapView.removeAnnotations(treeAnnotationArray)
+      mapView.addAnnotations(treeAnnotationArray)
+    }
+  }
+}
