@@ -23,8 +23,18 @@ extension UIApplicationDelegate {
     let treeDataArray = parseBCTreesCSV()
     for treeData in treeDataArray {
       let tree = NSManagedObject(entity: entity, insertInto: managedContext)
+      tree.setValue(treeData.tag, forKeyPath: "tag")
       tree.setValue(treeData.latitude, forKeyPath: "latitude")
       tree.setValue(treeData.longitude, forKeyPath: "longitude")
+      tree.setValue(treeData.commonName, forKeyPath: "commonName")
+      tree.setValue(treeData.botanicalName, forKeyPath: "botanicalName")
+      tree.setValue(treeData.campus, forKeyPath: "campus")
+      tree.setValue(treeData.dbh, forKeyPath: "dbh")
+      tree.setValue(treeData.carbonOffset, forKeyPath: "carbonOffset")
+      tree.setValue(treeData.distanceDriven, forKeyPath: "distanceDriven")
+      tree.setValue(treeData.carbonStorage, forKeyPath: "carbonStorage")
+      tree.setValue(treeData.pollutionRemoved, forKeyPath: "pollutionRemoved")
+      tree.setValue(treeData.waterIntercepted, forKeyPath: "waterIntercepted")
     }
     do {
       try managedContext.save()
@@ -33,15 +43,15 @@ extension UIApplicationDelegate {
     }
   }
   
-  func parseBCTreesCSV() -> [(tag: String, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, status: String, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] {
+  func parseBCTreesCSV() -> [(tag: Int, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] {
     // Load CSV file into Tree Data Array
-    var treeDataArray: [(tag: String, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, status: String, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] = []
+    var treeDataArray: [(tag: Int, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] = []
     let filePath = Bundle.main.url(forResource: "BCTrees", withExtension: "csv")!
     do {
       let csvFile: CSV = try CSV(url: filePath)
       let rows = csvFile.enumeratedRows
       for row in rows {
-        let tag = row[0]
+        let tag = Int(row[0]) ?? 0
         let latitude = Double(row[1]) ?? 0.0
         let longitude = Double(row[2]) ?? 0.0
         let commonName = row[3]
@@ -55,7 +65,7 @@ extension UIApplicationDelegate {
         let pollutionRemoved = Double(row[10]) ?? 0
         let waterIntercepted = (Double(row[11]) ?? 0) * 7.48052
         if status == "Living" {
-          let treeData = (tag: tag, latitude: latitude, longitude: longitude, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, status: status, carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted)
+          let treeData = (tag: tag, latitude: latitude, longitude: longitude, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted)
           treeDataArray.append(treeData)
         }
       }

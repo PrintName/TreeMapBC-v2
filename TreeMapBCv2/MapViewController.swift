@@ -45,10 +45,20 @@ class MapViewController: UIViewController {
     do {
       let treeObjects = try managedObjectContext.fetch(fetchRequest)
       for object in treeObjects {
+        let tag = object.value(forKey: "tag") as! Int
         let latitude = object.value(forKey: "latitude") as! Double
         let longitude = object.value(forKey: "longitude") as! Double
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let treeAnnotation = TreeAnnotation(coordinate: coordinate)
+        let commonName = object.value(forKey: "commonName") as! String
+        let botanicalName = object.value(forKey: "botanicalName") as! String
+        let campus = object.value(forKey: "campus") as! String
+        let dbh = object.value(forKey: "dbh") as! Double
+        let carbonOffset = object.value(forKey: "carbonOffset") as! Double
+        let distanceDriven = object.value(forKey: "distanceDriven") as! Double
+        let carbonStorage = object.value(forKey: "carbonStorage") as! Double
+        let pollutionRemoved = object.value(forKey: "pollutionRemoved") as! Double
+        let waterIntercepted = object.value(forKey: "waterIntercepted") as! Double
+        let treeAnnotation = TreeAnnotation(tag: tag, coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted)
         treeAnnotationArray.append(treeAnnotation)
       }
     } catch let error as NSError {
