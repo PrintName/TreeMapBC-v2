@@ -19,6 +19,7 @@ class TreeAnnotationView: MKMarkerAnnotationView {
     titleVisibility = .hidden
     subtitleVisibility = .hidden
     canShowCallout = true
+    self.rightCalloutAccessoryView = UILabel()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -27,7 +28,7 @@ class TreeAnnotationView: MKMarkerAnnotationView {
   
   override func prepareForDisplay() {
     super.prepareForDisplay()
-    displayPriority = .defaultHigh
-    markerTintColor = .systemGreen
+    displayPriority = .required
+    markerTintColor = .green
   }
 }

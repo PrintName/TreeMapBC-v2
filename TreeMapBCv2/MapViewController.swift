@@ -75,21 +75,34 @@ class MapViewController: UIViewController {
 extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     let annotationView: MKAnnotationView
-    if annotationClustering == true {
-      annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)!
-      annotationView.clusteringIdentifier = "tree"
+    if annotation is MKUserLocation {
+      return nil
+    } else if annotation is MKClusterAnnotation {
+       annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)!
     } else {
       annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)!
+    }
+    if annotationClustering == true {
+      annotationView.clusteringIdentifier = "tree"
+    } else {
       annotationView.clusteringIdentifier = nil
     }
-    return nil //return annotationView
+    return annotationView
   }
   
   func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-    if (mapView.region.span.latitudeDelta < 0.002) {
-      annotationClustering = false
-      mapView.removeAnnotations(treeAnnotationArray)
-      mapView.addAnnotations(treeAnnotationArray)
+    if mapView.region.span.latitudeDelta < 0.002 {
+      if annotationClustering == true {
+        toggleAnnotationClustering()
+      }
+    } else if annotationClustering == false {
+      toggleAnnotationClustering()
     }
+  }
+  
+  private func toggleAnnotationClustering() {
+    annotationClustering.toggle()
+    mapView.removeAnnotations(treeAnnotationArray)
+    mapView.addAnnotations(treeAnnotationArray)
   }
 }
