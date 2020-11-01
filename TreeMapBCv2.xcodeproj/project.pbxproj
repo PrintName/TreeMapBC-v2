@@ -20,6 +20,7 @@
 		9F9C3C66254C6EED00A9E079 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */; };
 		9F9C3C68254C7A7A00A9E079 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C67254C7A7A00A9E079 /* ClusterAnnotationView.swift */; };
 		9F9C3C6A254C9DAF00A9E079 /* TreeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */; };
+		9F9C3C6E254E6E8900A9E079 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C6D254E6E8800A9E079 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		9F9C3C67254C7A7A00A9E079 /* ClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterAnnotationView.swift; sourceTree = "<group>"; };
 		9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeLoader.swift; sourceTree = "<group>"; };
+		9F9C3C6D254E6E8800A9E079 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				9F9C3C48254B802A00A9E079 /* AppDelegate.swift */,
+				9F9C3C6D254E6E8800A9E079 /* Utils.swift */,
 				9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */,
 				9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */,
 				9F9C3C4C254B802A00A9E079 /* MapViewController.swift */,
@@ -227,6 +230,7 @@
 			files = (
 				9F9C3C66254C6EED00A9E079 /* TreeAnnotationView.swift in Sources */,
 				9F9C3C60254B8C9400A9E079 /* TreeAnnotation.swift in Sources */,
+				9F9C3C6E254E6E8900A9E079 /* Utils.swift in Sources */,
 				9F9C3C6A254C9DAF00A9E079 /* TreeLoader.swift in Sources */,
 				9F9C3C4D254B802A00A9E079 /* MapViewController.swift in Sources */,
 				9F9C3C49254B802A00A9E079 /* AppDelegate.swift in Sources */,

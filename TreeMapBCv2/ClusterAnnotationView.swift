@@ -27,6 +27,6 @@ class ClusterAnnotationView: MKMarkerAnnotationView {
   override func prepareForDisplay() {
     super.prepareForDisplay()
     displayPriority = .defaultHigh
-    markerTintColor = .systemGreen
+    markerTintColor = .primaryColor
   }
 }

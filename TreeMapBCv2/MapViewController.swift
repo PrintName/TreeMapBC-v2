@@ -90,6 +90,20 @@ extension MapViewController: MKMapViewDelegate {
     return annotationView
   }
   
+  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    let markerView = view as! MKMarkerAnnotationView
+    markerView.markerTintColor = .highlightColor
+    markerView.glyphTintColor = .white
+  }
+  
+  func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+    let markerView = view as! MKMarkerAnnotationView
+    markerView.markerTintColor = .primaryColor
+    if markerView.glyphImage != nil {
+      markerView.glyphTintColor = .secondaryColor
+    }
+  }
+  
   func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
     if mapView.region.span.latitudeDelta < 0.002 {
       if annotationClustering == true {

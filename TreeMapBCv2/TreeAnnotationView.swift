@@ -18,8 +18,6 @@ class TreeAnnotationView: MKMarkerAnnotationView {
     collisionMode = .circle
     titleVisibility = .hidden
     subtitleVisibility = .hidden
-    canShowCallout = true
-    self.rightCalloutAccessoryView = UILabel()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -29,6 +27,8 @@ class TreeAnnotationView: MKMarkerAnnotationView {
   override func prepareForDisplay() {
     super.prepareForDisplay()
     displayPriority = .required
-    markerTintColor = .green
+    markerTintColor = .primaryColor
+    glyphImage = UIImage(named: "treeGlyph")
+    glyphTintColor = .secondaryColor
   }
 }
