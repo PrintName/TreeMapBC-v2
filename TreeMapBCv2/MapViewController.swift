@@ -23,7 +23,6 @@ class MapViewController: UIViewController {
   
   func configureMapView() {
     mapView.delegate = self
-    mapView.mapType = .satellite
     
     let initialLocation = CLLocation(latitude: 42.3361, longitude: -71.1677)
     let initialRegion = MKCoordinateRegion(center: initialLocation.coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01))
