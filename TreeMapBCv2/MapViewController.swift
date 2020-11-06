@@ -11,6 +11,10 @@ import MapKit
 import CoreData
 
 class MapViewController: UIViewController {
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
+  
   @IBOutlet weak var mapView: MKMapView!
   
   var annotationClustering = true
@@ -60,7 +64,7 @@ class MapViewController: UIViewController {
         let carbonStorage = object.value(forKey: "carbonStorage") as! Double
         let pollutionRemoved = object.value(forKey: "pollutionRemoved") as! Double
         let waterIntercepted = object.value(forKey: "waterIntercepted") as! Double
-        let treeAnnotation = TreeAnnotation(title: commonName, subtitle: botanicalName, tag: tag, coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted)
+        let treeAnnotation = TreeAnnotation(title: commonName, subtitle: botanicalName, tag: tag, coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, impact: TreeAnnotation.Impact(carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted))
         treeAnnotationArray.append(treeAnnotation)
       }
     } catch let error as NSError {
@@ -68,7 +72,6 @@ class MapViewController: UIViewController {
     }
     return treeAnnotationArray
   }
-
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -77,7 +80,7 @@ extension MapViewController: MKMapViewDelegate {
     if annotation is MKUserLocation {
       return nil
     } else if annotation is MKClusterAnnotation {
-       annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)!
+      annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)!
     } else {
       annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)!
     }
@@ -93,6 +96,37 @@ extension MapViewController: MKMapViewDelegate {
     let markerView = view as! MKMarkerAnnotationView
     markerView.markerTintColor = .highlightColor
     markerView.glyphTintColor = .white
+    
+    var title = "Title"
+    var subtitle = "Subtitle"
+    var impact = TreeAnnotation.Impact(carbonOffset: 0, distanceDriven: 0, carbonStorage: 0, pollutionRemoved: 0, waterIntercepted: 0)
+    
+    if let treeAnnotation = view.annotation as? TreeAnnotation {
+      title = treeAnnotation.commonName
+      subtitle = treeAnnotation.botanicalName
+      impact = treeAnnotation.impact
+    }
+    
+    if let clusterAnnotation = view.annotation as? MKClusterAnnotation {
+      let treeAnnotations = clusterAnnotation.memberAnnotations as! [TreeAnnotation]
+      var treeNameCounts: [String: Int] = [:]
+      for annotation in treeAnnotations {
+        impact.carbonOffset += annotation.impact.carbonOffset
+        impact.distanceDriven += annotation.impact.distanceDriven
+        impact.carbonStorage += annotation.impact.carbonStorage
+        impact.pollutionRemoved += annotation.impact.pollutionRemoved
+        impact.waterIntercepted += annotation.impact.waterIntercepted
+        treeNameCounts[annotation.commonName, default: 0] += 1
+      }
+      let (treeName, _) = treeNameCounts.max(by: { $0.1 < $1.1 })!
+      title = treeName
+      let otherSpeciesCount = treeNameCounts.count - 1
+      subtitle = "And \(otherSpeciesCount) other species"
+    }
+    print()
+    print(title)
+    print(subtitle)
+    print(impact)
   }
   
   func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {

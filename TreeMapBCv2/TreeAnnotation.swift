@@ -18,13 +18,17 @@ class TreeAnnotation: NSObject, MKAnnotation {
   let botanicalName: String
   let campus: String
   let dbh: Double
-  let carbonOffset: Double
-  let distanceDriven: Double
-  let carbonStorage: Double
-  let pollutionRemoved: Double
-  let waterIntercepted: Double
+  let impact: Impact
   
-  init(title: String?, subtitle: String?, tag: Int, coordinate: CLLocationCoordinate2D, commonName: String, botanicalName: String, campus: String, dbh: Double, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double) {
+  struct Impact {
+    var carbonOffset: Double
+    var distanceDriven: Double
+    var carbonStorage: Double
+    var pollutionRemoved: Double
+    var waterIntercepted: Double
+  }
+  
+  init(title: String?, subtitle: String?, tag: Int, coordinate: CLLocationCoordinate2D, commonName: String, botanicalName: String, campus: String, dbh: Double, impact: Impact) {
     self.title = title
     self.subtitle = subtitle
     self.tag = tag
@@ -33,11 +37,7 @@ class TreeAnnotation: NSObject, MKAnnotation {
     self.botanicalName = botanicalName
     self.campus = campus
     self.dbh = dbh
-    self.carbonOffset = carbonOffset
-    self.distanceDriven = distanceDriven
-    self.carbonStorage = carbonStorage
-    self.pollutionRemoved = pollutionRemoved
-    self.waterIntercepted = waterIntercepted
+    self.impact = impact
     super.init()
   }
 }
