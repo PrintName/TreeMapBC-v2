@@ -11,8 +11,19 @@ import UIKit
 class BottomSheetViewController: UIViewController {
   @IBOutlet var bottomSheetView: UIView!
   
+  @IBOutlet weak var bottomSheetTitle: UILabel!
+  @IBOutlet weak var bottomSheetSubtitle: UILabel!
+  
+  @IBOutlet weak var bottomSheetDetail: UILabel!
+  @IBOutlet weak var bottomSheetDetailRightConstraint: NSLayoutConstraint!
+  
+  @IBOutlet weak var impactLabel: UILabel!
+  @IBOutlet weak var impactArrow: UIImageView!
+  
+  @IBOutlet weak var bottomSheetImpact: UILabel!
+  
   let fullViewHeight: CGFloat = 500
-  let partialViewHeight: CGFloat = 150
+  let partialViewHeight: CGFloat = 165
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -61,8 +72,16 @@ class BottomSheetViewController: UIViewController {
       UIView.animate(withDuration: duration, delay: 0.0, options: [.allowUserInteraction], animations: {
         if  velocity.y >= 0 {
           self.view.frame = CGRect(x: 0, y: partialViewSpacing, width: self.view.frame.width, height: self.view.frame.height)
+          self.bottomSheetDetail.numberOfLines = 4
+          self.impactLabel.isHidden = false
+          self.impactArrow.isHidden = false
+          self.bottomSheetDetailRightConstraint.constant = 100
         } else {
           self.view.frame = CGRect(x: 0, y: fullViewSpacing, width: self.view.frame.width, height: self.view.frame.height)
+          self.bottomSheetDetail.numberOfLines = 0
+          self.impactLabel.isHidden = true
+          self.impactArrow.isHidden = true
+          self.bottomSheetDetailRightConstraint.constant = 40
         }
       }, completion: nil)
     }
