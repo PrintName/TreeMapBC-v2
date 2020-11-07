@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureMapView()
+    addBottomSheetView()
   }
   
   func configureMapView() {
@@ -71,6 +72,17 @@ class MapViewController: UIViewController {
       print("Could not fetch. \(error), \(error.userInfo)")
     }
     return treeAnnotationArray
+  }
+  
+  func addBottomSheetView() {
+    let bottomSheetVC = BottomSheetViewController()
+    
+    self.addChild(bottomSheetVC)
+    self.view.addSubview(bottomSheetVC.view)
+    
+    let height = view.frame.height
+    let width  = view.frame.width
+    bottomSheetVC.view.frame = .init(x: 0, y: self.view.frame.maxY, width: width, height: height)
   }
 }
 

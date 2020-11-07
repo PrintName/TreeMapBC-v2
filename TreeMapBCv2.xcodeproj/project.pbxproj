@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		58D755C18BF7CC092FCEA6D2 /* Pods_TreeMapBCv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D59A55E09E8B0EA0EEE6F6 /* Pods_TreeMapBCv2.framework */; };
+		9F32F4B0255611EA008A8430 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */; };
+		9F32F4B1255611EA008A8430 /* BottomSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F32F4AF255611EA008A8430 /* BottomSheet.xib */; };
 		9F9C3C49254B802A00A9E079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C48254B802A00A9E079 /* AppDelegate.swift */; };
 		9F9C3C4B254B802A00A9E079 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */; };
 		9F9C3C4D254B802A00A9E079 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C4C254B802A00A9E079 /* MapViewController.swift */; };
@@ -27,6 +29,8 @@
 		1C43EF2124885E6570A60265 /* Pods-TreeMapBCv2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeMapBCv2.debug.xcconfig"; path = "Target Support Files/Pods-TreeMapBCv2/Pods-TreeMapBCv2.debug.xcconfig"; sourceTree = "<group>"; };
 		32F2A40AAC3FF8A84274A7D1 /* Pods-TreeMapBCv2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeMapBCv2.release.xcconfig"; path = "Target Support Files/Pods-TreeMapBCv2/Pods-TreeMapBCv2.release.xcconfig"; sourceTree = "<group>"; };
 		46D59A55E09E8B0EA0EEE6F6 /* Pods_TreeMapBCv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreeMapBCv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		9F32F4AF255611EA008A8430 /* BottomSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheet.xib; sourceTree = "<group>"; };
 		9F9C3C45254B802A00A9E079 /* TreeMapBCv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeMapBCv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9C3C48254B802A00A9E079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,10 +103,12 @@
 				9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */,
 				9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */,
 				9F9C3C4C254B802A00A9E079 /* MapViewController.swift */,
+				9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */,
 				9F9C3C5F254B8C9400A9E079 /* TreeAnnotation.swift */,
 				9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */,
 				9F9C3C67254C7A7A00A9E079 /* ClusterAnnotationView.swift */,
 				9F9C3C4E254B802A00A9E079 /* Main.storyboard */,
+				9F32F4AF255611EA008A8430 /* BottomSheet.xib */,
 				9F9C3C54254B803000A9E079 /* Assets.xcassets */,
 				9F9C3C56254B803000A9E079 /* LaunchScreen.storyboard */,
 				9F9C3C59254B803000A9E079 /* Info.plist */,
@@ -176,6 +182,7 @@
 				9F9C3C64254BBA1D00A9E079 /* BCTrees.csv in Resources */,
 				9F9C3C55254B803000A9E079 /* Assets.xcassets in Resources */,
 				9F9C3C50254B802A00A9E079 /* Main.storyboard in Resources */,
+				9F32F4B1255611EA008A8430 /* BottomSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +238,7 @@
 				9F9C3C66254C6EED00A9E079 /* TreeAnnotationView.swift in Sources */,
 				9F9C3C60254B8C9400A9E079 /* TreeAnnotation.swift in Sources */,
 				9F9C3C6E254E6E8900A9E079 /* Utils.swift in Sources */,
+				9F32F4B0255611EA008A8430 /* BottomSheetViewController.swift in Sources */,
 				9F9C3C6A254C9DAF00A9E079 /* TreeLoader.swift in Sources */,
 				9F9C3C4D254B802A00A9E079 /* MapViewController.swift in Sources */,
 				9F9C3C49254B802A00A9E079 /* AppDelegate.swift in Sources */,
