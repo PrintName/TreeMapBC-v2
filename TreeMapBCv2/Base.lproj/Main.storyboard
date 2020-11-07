@@ -16,14 +16,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRr-NI-3jO">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="gRr-NI-3jO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2WY-wO-PwT"/>
-                            <constraint firstAttribute="bottom" secondItem="gRr-NI-3jO" secondAttribute="bottom" constant="150" id="Bw6-er-PV6"/>
                             <constraint firstItem="gRr-NI-3jO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ESk-CO-L3Z"/>
+                            <constraint firstAttribute="bottom" secondItem="gRr-NI-3jO" secondAttribute="bottom" id="VLH-jc-bkh"/>
                             <constraint firstItem="gRr-NI-3jO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="o9D-8N-rgC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

@@ -9,7 +9,7 @@
 import UIKit
 
 class BottomSheetViewController: UIViewController {
-  @IBOutlet var BottomSheetView: UIView!
+  @IBOutlet var bottomSheetView: UIView!
   
   let fullViewHeight: CGFloat = 500
   let partialViewHeight: CGFloat = 150
@@ -20,6 +20,12 @@ class BottomSheetViewController: UIViewController {
     
     let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(BottomSheetViewController.panGesture))
     view.addGestureRecognizer(gesture)
+    
+    bottomSheetView.layer.shadowColor = UIColor.black.cgColor
+    bottomSheetView.layer.shadowOpacity = 0.5
+    bottomSheetView.layer.shadowOffset = .zero
+    bottomSheetView.layer.shadowRadius = 10
+    bottomSheetView.layer.shadowPath = UIBezierPath(rect: bottomSheetView.bounds).cgPath
   }
   
   override func viewDidAppear(_ animated: Bool) {
