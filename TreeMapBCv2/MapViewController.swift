@@ -26,6 +26,11 @@ class MapViewController: UIViewController {
     addBottomSheetView()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    treeAnnotationArray = createTreeAnnotations()
+    mapView.addAnnotations(treeAnnotationArray)
+  }
+  
   func configureMapView() {
     mapView.delegate = self
     
@@ -35,11 +40,6 @@ class MapViewController: UIViewController {
     
     mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     mapView.register(ClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    treeAnnotationArray = createTreeAnnotations()
-    mapView.addAnnotations(treeAnnotationArray)
   }
   
   func createTreeAnnotations() -> [TreeAnnotation] {
