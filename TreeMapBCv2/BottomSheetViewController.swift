@@ -17,13 +17,13 @@ class BottomSheetViewController: UIViewController {
   @IBOutlet weak var bottomSheetDetail: UILabel!
   @IBOutlet weak var bottomSheetDetailRightConstraint: NSLayoutConstraint!
   
-  @IBOutlet weak var impactLabel: UILabel!
-  @IBOutlet weak var impactArrow: UIImageView!
+  @IBOutlet weak var impactLabelButton: UIButton!
+  @IBOutlet weak var impactArrowButton: UIButton!
   
   @IBOutlet weak var bottomSheetImpact: UILabel!
   
-  let fullViewHeight: CGFloat = 375
-  let partialViewHeight: CGFloat = 165
+  let fullViewSpacing: CGFloat = UIScreen.main.bounds.height - 375
+  let partialViewSpacing: CGFloat = UIScreen.main.bounds.height - 165
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,9 +34,8 @@ class BottomSheetViewController: UIViewController {
     super.viewDidAppear(animated)
     
     UIView.animate(withDuration: 0.3) { [weak self] in
-      let frame = self?.view.frame
-      let yComponent = UIScreen.main.bounds.height - self!.partialViewHeight
-      self!.view.frame = .init(x: 0, y: yComponent, width: frame!.width, height: frame!.height)
+      let frame = self!.view.frame
+      self!.view.frame = .init(x: 0, y: self!.partialViewSpacing, width: frame.width, height: frame.height)
     }
   }
   
@@ -53,10 +52,13 @@ class BottomSheetViewController: UIViewController {
     bottomSheetView.layer.shadowPath = UIBezierPath(rect: bottomSheetView.bounds).cgPath
   }
   
+  @IBAction func impactButtonsTouched(_ sender: Any) {
+    UIView.animate(withDuration: 0.6, delay: 0.0, options: [.allowUserInteraction], animations: {
+      self.showFullDetail()
+    }, completion: nil)
+  }
+  
   @objc func panGesture(_ recognizer: UIPanGestureRecognizer) {
-    let fullViewSpacing: CGFloat = UIScreen.main.bounds.height - fullViewHeight
-    let partialViewSpacing: CGFloat = UIScreen.main.bounds.height - partialViewHeight
-    
     let translation = recognizer.translation(in: self.view)
     let velocity = recognizer.velocity(in: self.view)
     
@@ -76,28 +78,27 @@ class BottomSheetViewController: UIViewController {
       
       UIView.animate(withDuration: duration, delay: 0.0, options: [.allowUserInteraction], animations: {
         if velocity.y >= 0 {
-          self.view.frame = CGRect(x: 0, y: partialViewSpacing, width: self.view.frame.width, height: self.view.frame.height)
-          self.displayFullDetail(false)
+          self.hideFullDetail()
         } else {
-          self.view.frame = CGRect(x: 0, y: fullViewSpacing, width: self.view.frame.width, height: self.view.frame.height)
-          self.displayFullDetail(true)
+          self.showFullDetail()
         }
       }, completion: nil)
     }
   }
   
-  func displayFullDetail(_ full: Bool) {
-    switch full {
-    case false:
-      self.bottomSheetDetail.numberOfLines = 4
-      self.impactLabel.isHidden = false
-      self.impactArrow.isHidden = false
-      self.bottomSheetDetailRightConstraint.constant = 100
-    case true:
-      self.bottomSheetDetail.numberOfLines = 0
-      self.impactLabel.isHidden = true
-      self.impactArrow.isHidden = true
-      self.bottomSheetDetailRightConstraint.constant = 40
-    }
+  func showFullDetail() {
+    self.view.frame = CGRect(x: 0, y: fullViewSpacing, width: self.view.frame.width, height: self.view.frame.height)
+    self.bottomSheetDetail.numberOfLines = 0
+    self.impactLabelButton.isHidden = true
+    self.impactArrowButton.isHidden = true
+    self.bottomSheetDetailRightConstraint.constant = 40
+  }
+  
+  func hideFullDetail() {
+    self.view.frame = CGRect(x: 0, y: partialViewSpacing, width: self.view.frame.width, height: self.view.frame.height)
+    self.bottomSheetDetail.numberOfLines = 4
+    self.impactLabelButton.isHidden = false
+    self.impactArrowButton.isHidden = false
+    self.bottomSheetDetailRightConstraint.constant = 100
   }
 }
