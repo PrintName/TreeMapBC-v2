@@ -21,11 +21,11 @@ class TreeAnnotation: NSObject, MKAnnotation {
   let impact: Impact
   
   struct Impact {
-    var carbonOffset: Double
-    var distanceDriven: Double
-    var carbonStorage: Double
-    var pollutionRemoved: Double
-    var waterIntercepted: Double
+    var carbonOffset: Double = 0
+    var distanceDriven: Double = 0
+    var carbonStorage: Double = 0
+    var pollutionRemoved: Double = 0
+    var waterIntercepted: Double = 0
   }
   
   init(title: String?, subtitle: String?, tag: Int, coordinate: CLLocationCoordinate2D, commonName: String, botanicalName: String, campus: String, dbh: Double, impact: Impact) {

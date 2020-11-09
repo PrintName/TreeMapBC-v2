@@ -32,9 +32,11 @@ class MapViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     treeAnnotations.createDefaultTreeAnnotations()
     mapView.addAnnotations(treeAnnotations.currentArray)
+    setBottomSheetImpact(treeAnnotations.currentImpact)
+    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.currentArray.count) Trees"
   }
   
-  func configureMapView() {
+  private func configureMapView() {
     mapView.delegate = self
     
     let initialLocation = CLLocation(latitude: 42.3361, longitude: -71.1677)
@@ -45,39 +47,7 @@ class MapViewController: UIViewController {
     mapView.register(ClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
   }
   
-  func createTreeAnnotations() -> [TreeAnnotation] {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [] }
-    let managedObjectContext = appDelegate.persistentContainer.viewContext
-    
-    var treeAnnotationArray = [TreeAnnotation]()
-    
-    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Tree")
-    do {
-      let treeObjects = try managedObjectContext.fetch(fetchRequest)
-      for object in treeObjects {
-        let tag = object.value(forKey: "tag") as! Int
-        let latitude = object.value(forKey: "latitude") as! Double
-        let longitude = object.value(forKey: "longitude") as! Double
-        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let commonName = object.value(forKey: "commonName") as! String
-        let botanicalName = object.value(forKey: "botanicalName") as! String
-        let campus = object.value(forKey: "campus") as! String
-        let dbh = object.value(forKey: "dbh") as! Double
-        let carbonOffset = object.value(forKey: "carbonOffset") as! Double
-        let distanceDriven = object.value(forKey: "distanceDriven") as! Double
-        let carbonStorage = object.value(forKey: "carbonStorage") as! Double
-        let pollutionRemoved = object.value(forKey: "pollutionRemoved") as! Double
-        let waterIntercepted = object.value(forKey: "waterIntercepted") as! Double
-        let treeAnnotation = TreeAnnotation(title: commonName, subtitle: botanicalName, tag: tag, coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, impact: TreeAnnotation.Impact(carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted))
-        treeAnnotationArray.append(treeAnnotation)
-      }
-    } catch let error as NSError {
-      print("Could not fetch. \(error), \(error.userInfo)")
-    }
-    return treeAnnotationArray
-  }
-  
-  func addBottomSheetView() {
+  private func addBottomSheetView() {
     bottomSheetVC = BottomSheetViewController()
     
     self.addChild(bottomSheetVC)
@@ -86,6 +56,17 @@ class MapViewController: UIViewController {
     let height = view.frame.height
     let width  = view.frame.width
     bottomSheetVC.view.frame = .init(x: 0, y: self.view.frame.maxY, width: width, height: height)
+  }
+  
+  private func setBottomSheetImpact(_ impact: TreeAnnotation.Impact) {
+    bottomSheetVC.bottomSheetImpact.text =
+    """
+    • CO2 Offset: \(impact.carbonOffset.formatted) lb
+        (est. \(impact.distanceDriven.formatted) mi driven)
+    • Total Carbon Stored: \(impact.carbonStorage.formatted) lb
+    • Air Pollution Removed: \(impact.pollutionRemoved.formatted) oz
+    • Rainfall Runoff Intercepted: \(impact.waterIntercepted.formatted) gal
+    """
   }
 }
 
@@ -138,19 +119,9 @@ extension MapViewController: MKMapViewDelegate {
       let otherSpeciesCount = treeNameCounts.count - 1
       subtitle = "+ \(otherSpeciesCount) other species"
     }
-    print()
-    print(title)
-    print(subtitle)
-    print(impact)
     bottomSheetVC.bottomSheetTitle.text = title
     bottomSheetVC.bottomSheetSubtitle.text = subtitle
-    bottomSheetVC.bottomSheetImpact.text =
-    """
-    • CO2 Offset: \(impact.carbonOffset.formatted) lb (est. \(impact.distanceDriven.formatted) mi driven)
-    • Total Carbon Stored: \(impact.carbonStorage.formatted) lb
-    • Air Pollution Removed: \(impact.pollutionRemoved.formatted) oz
-    • Rainfall Runoff Intercepted: \(impact.waterIntercepted.formatted) gal
-    """
+    setBottomSheetImpact(impact)
   }
   
   func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -160,14 +131,8 @@ extension MapViewController: MKMapViewDelegate {
       markerView.glyphTintColor = .secondaryColor
     }
     bottomSheetVC.bottomSheetTitle.text = "TreeMap: Boston College"
-    bottomSheetVC.bottomSheetSubtitle.text = "4000 Total Trees"
-    bottomSheetVC.bottomSheetImpact.text =
-    """
-    • CO2 Offset: _ lb (est. _ mi driven)
-    • Total Carbon Stored: _ lb
-    • Air Pollution Removed: _ oz
-    • Rainfall Runoff Intercepted: _ gal
-    """
+    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.currentArray.count) Trees"
+    setBottomSheetImpact(treeAnnotations.currentImpact)
   }
   
   func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

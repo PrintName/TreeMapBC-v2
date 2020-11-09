@@ -14,15 +14,21 @@ class TreeAnnotations {
   var currentArray: [TreeAnnotation]!
   private var defaultArray: [TreeAnnotation]!
   
+  var currentImpact: TreeAnnotation.Impact!
+  private var defaultImpact: TreeAnnotation.Impact!
+  
   func createDefaultTreeAnnotations() {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let managedObjectContext = appDelegate.persistentContainer.viewContext
     
     var treeAnnotationArray = [TreeAnnotation]()
+    var treeImpact = TreeAnnotation.Impact()
     
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Tree")
+    
     do {
       let treeObjects = try managedObjectContext.fetch(fetchRequest)
+      
       for object in treeObjects {
         let tag = object.value(forKey: "tag") as! Int
         let latitude = object.value(forKey: "latitude") as! Double
@@ -37,13 +43,25 @@ class TreeAnnotations {
         let carbonStorage = object.value(forKey: "carbonStorage") as! Double
         let pollutionRemoved = object.value(forKey: "pollutionRemoved") as! Double
         let waterIntercepted = object.value(forKey: "waterIntercepted") as! Double
+        
         let treeAnnotation = TreeAnnotation(title: commonName, subtitle: botanicalName, tag: tag, coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, impact: TreeAnnotation.Impact(carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted))
         treeAnnotationArray.append(treeAnnotation)
+        
+        treeImpact.carbonOffset += carbonOffset
+        treeImpact.distanceDriven += distanceDriven
+        treeImpact.carbonStorage += carbonStorage
+        treeImpact.pollutionRemoved += pollutionRemoved
+        treeImpact.waterIntercepted += waterIntercepted
       }
+      
     } catch let error as NSError {
       print("Could not fetch. \(error), \(error.userInfo)")
     }
+    
     defaultArray = treeAnnotationArray
     currentArray = defaultArray
+    
+    defaultImpact = treeImpact
+    currentImpact = defaultImpact
   }
 }

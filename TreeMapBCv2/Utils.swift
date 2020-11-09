@@ -13,3 +13,16 @@ extension UIColor {
   static let secondaryColor = UIColor.init(red: 147/255, green: 196/255, blue: 139/255, alpha: 1)
   static let highlightColor =  UIColor.init(red: 227/255, green: 101/255, blue: 91/255, alpha: 1)
 }
+
+extension Double {
+  private static var addCommas: NumberFormatter = {
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = .decimal
+    return numberFormatter
+  }()
+  
+  internal var formatted: String {
+    let roundedValue = NSNumber(value: self.rounded())
+    return Double.addCommas.string(from: roundedValue) ?? ""
+  }
+}

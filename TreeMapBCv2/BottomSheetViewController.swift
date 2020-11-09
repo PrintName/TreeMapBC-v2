@@ -22,7 +22,7 @@ class BottomSheetViewController: UIViewController {
   
   @IBOutlet weak var bottomSheetImpact: UILabel!
   
-  let fullViewHeight: CGFloat = 500
+  let fullViewHeight: CGFloat = 375
   let partialViewHeight: CGFloat = 165
   
   override func viewDidLoad() {
