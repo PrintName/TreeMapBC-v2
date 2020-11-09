@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		58D755C18BF7CC092FCEA6D2 /* Pods_TreeMapBCv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D59A55E09E8B0EA0EEE6F6 /* Pods_TreeMapBCv2.framework */; };
+		9F2D733625590E9200084F46 /* TreeAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2D733525590E9200084F46 /* TreeAnnotations.swift */; };
 		9F32F4B0255611EA008A8430 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */; };
 		9F32F4B1255611EA008A8430 /* BottomSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F32F4AF255611EA008A8430 /* BottomSheet.xib */; };
 		9F9C3C49254B802A00A9E079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C48254B802A00A9E079 /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 		1C43EF2124885E6570A60265 /* Pods-TreeMapBCv2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeMapBCv2.debug.xcconfig"; path = "Target Support Files/Pods-TreeMapBCv2/Pods-TreeMapBCv2.debug.xcconfig"; sourceTree = "<group>"; };
 		32F2A40AAC3FF8A84274A7D1 /* Pods-TreeMapBCv2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeMapBCv2.release.xcconfig"; path = "Target Support Files/Pods-TreeMapBCv2/Pods-TreeMapBCv2.release.xcconfig"; sourceTree = "<group>"; };
 		46D59A55E09E8B0EA0EEE6F6 /* Pods_TreeMapBCv2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreeMapBCv2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F2D733525590E9200084F46 /* TreeAnnotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotations.swift; sourceTree = "<group>"; };
 		9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		9F32F4AF255611EA008A8430 /* BottomSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheet.xib; sourceTree = "<group>"; };
 		9F9C3C45254B802A00A9E079 /* TreeMapBCv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeMapBCv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 				9F9C3C4C254B802A00A9E079 /* MapViewController.swift */,
 				9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */,
 				9F9C3C5F254B8C9400A9E079 /* TreeAnnotation.swift */,
+				9F2D733525590E9200084F46 /* TreeAnnotations.swift */,
 				9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */,
 				9F9C3C67254C7A7A00A9E079 /* ClusterAnnotationView.swift */,
 				9F9C3C4E254B802A00A9E079 /* Main.storyboard */,
@@ -245,6 +248,7 @@
 				9F9C3C4B254B802A00A9E079 /* SceneDelegate.swift in Sources */,
 				9F9C3C68254C7A7A00A9E079 /* ClusterAnnotationView.swift in Sources */,
 				9F9C3C53254B802A00A9E079 /* TreeMapBCv2.xcdatamodeld in Sources */,
+				9F2D733625590E9200084F46 /* TreeAnnotations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

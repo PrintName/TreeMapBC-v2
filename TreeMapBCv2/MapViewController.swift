@@ -18,7 +18,10 @@ class MapViewController: UIViewController {
   @IBOutlet weak var mapView: MKMapView!
   
   var annotationClustering = true
-  var treeAnnotationArray = [TreeAnnotation]()
+  
+  var bottomSheetVC: BottomSheetViewController!
+  
+  let treeAnnotations = TreeAnnotations()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,8 +30,8 @@ class MapViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    treeAnnotationArray = createTreeAnnotations()
-    mapView.addAnnotations(treeAnnotationArray)
+    treeAnnotations.createDefaultTreeAnnotations()
+    mapView.addAnnotations(treeAnnotations.currentArray)
   }
   
   func configureMapView() {
@@ -75,7 +78,7 @@ class MapViewController: UIViewController {
   }
   
   func addBottomSheetView() {
-    let bottomSheetVC = BottomSheetViewController()
+    bottomSheetVC = BottomSheetViewController()
     
     self.addChild(bottomSheetVC)
     self.view.addSubview(bottomSheetVC.view)
@@ -133,12 +136,21 @@ extension MapViewController: MKMapViewDelegate {
       let (treeName, _) = treeNameCounts.max(by: { $0.1 < $1.1 })!
       title = treeName
       let otherSpeciesCount = treeNameCounts.count - 1
-      subtitle = "And \(otherSpeciesCount) other species"
+      subtitle = "+ \(otherSpeciesCount) other species"
     }
     print()
     print(title)
     print(subtitle)
     print(impact)
+    bottomSheetVC.bottomSheetTitle.text = title
+    bottomSheetVC.bottomSheetSubtitle.text = subtitle
+    bottomSheetVC.bottomSheetImpact.text =
+    """
+    • CO2 Offset: \(impact.carbonOffset.formatted) lb (est. \(impact.distanceDriven.formatted) mi driven)
+    • Total Carbon Stored: \(impact.carbonStorage.formatted) lb
+    • Air Pollution Removed: \(impact.pollutionRemoved.formatted) oz
+    • Rainfall Runoff Intercepted: \(impact.waterIntercepted.formatted) gal
+    """
   }
   
   func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -147,6 +159,15 @@ extension MapViewController: MKMapViewDelegate {
     if markerView.glyphImage != nil {
       markerView.glyphTintColor = .secondaryColor
     }
+    bottomSheetVC.bottomSheetTitle.text = "TreeMap: Boston College"
+    bottomSheetVC.bottomSheetSubtitle.text = "4000 Total Trees"
+    bottomSheetVC.bottomSheetImpact.text =
+    """
+    • CO2 Offset: _ lb (est. _ mi driven)
+    • Total Carbon Stored: _ lb
+    • Air Pollution Removed: _ oz
+    • Rainfall Runoff Intercepted: _ gal
+    """
   }
   
   func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -161,7 +182,7 @@ extension MapViewController: MKMapViewDelegate {
   
   private func toggleAnnotationClustering() {
     annotationClustering.toggle()
-    mapView.removeAnnotations(treeAnnotationArray)
-    mapView.addAnnotations(treeAnnotationArray)
+    mapView.removeAnnotations(treeAnnotations.currentArray)
+    mapView.addAnnotations(treeAnnotations.currentArray)
   }
 }
