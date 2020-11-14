@@ -1,16 +1,20 @@
 PODS:
+  - Cluster (3.0.3)
   - SwiftCSV (0.5.6)
 
 DEPENDENCIES:
+  - Cluster
   - SwiftCSV
 
 SPEC REPOS:
   trunk:
+    - Cluster
     - SwiftCSV
 
 SPEC CHECKSUMS:
+  Cluster: d72510594f60d901905953aafdc811d1888177ae
   SwiftCSV: efb4a15dd7f2f1212b3d6986f97a3369ff6c5100
 
-PODFILE CHECKSUM: bcb61e7f5f3718fce7acc4b24a2e09d42f48f9ca
+PODFILE CHECKSUM: cfa5df1e133098643a89e1f7fa1b3b304217657c
 
 COCOAPODS: 1.9.1

@@ -7,5 +7,6 @@ target 'TreeMapBCv2' do
 
   # Pods for TreeMapBCv2
   pod "SwiftCSV"
+  pod "Cluster"
 
 end

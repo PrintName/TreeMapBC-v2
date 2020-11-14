@@ -46,7 +46,7 @@ extension UIApplicationDelegate {
   func parseBCTreesCSV() -> [(tag: Int, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] {
     // Load CSV file into Tree Data Array
     var treeDataArray: [(tag: Int, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] = []
-    let filePath = Bundle.main.url(forResource: "BCTrees", withExtension: "csv")!
+    let filePath = Bundle.main.url(forResource: "BCTrees", withExtension: "csv")! // TODO: Replace with online hosted CSV
     do {
       let csvFile: CSV = try CSV(url: filePath)
       let rows = csvFile.enumeratedRows
