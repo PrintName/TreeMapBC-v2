@@ -14,6 +14,12 @@ extension UIColor {
   static let highlightColor =  UIColor.init(red: 227/255, green: 101/255, blue: 91/255, alpha: 1)
 }
 
+extension CGColor {
+  static let primaryColor = UIColor.primaryColor.cgColor
+  static let secondaryColor = UIColor.secondaryColor.cgColor
+  static let highlightColor =  UIColor.highlightColor.cgColor
+}
+
 extension Double {
   private static var addCommas: NumberFormatter = {
     let numberFormatter = NumberFormatter()

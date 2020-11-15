@@ -17,12 +17,12 @@ class TreeClusterAnnotationView: ClusterAnnotationView {
     guard let annotation = annotation as? ClusterAnnotation else { return }
     let count = annotation.annotations.count
     let diameter = radius(for: count) * 2
-    self.frame.size = CGSize(width: diameter, height: diameter)
-    self.layer.cornerRadius = self.frame.width / 2
-    self.layer.masksToBounds = true
-    self.layer.borderColor = UIColor.white.cgColor
-    self.layer.backgroundColor = UIColor.primaryColor.cgColor
-    self.layer.borderWidth = 1.5
+    frame.size = CGSize(width: diameter, height: diameter)
+    layer.cornerRadius = frame.width / 2
+    layer.masksToBounds = true
+    layer.borderColor = UIColor.white.cgColor
+    layer.backgroundColor = .primaryColor
+    layer.borderWidth = 1.5
   }
   
   func radius(for count: Int) -> CGFloat {

@@ -41,7 +41,6 @@ class MapViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     treeAnnotations.createDefaultTreeAnnotations()
-//    mapView.addAnnotations(treeAnnotations.currentArray)
     clusterManager.add(treeAnnotations.currentArray)
     clusterManager.reload(mapView: mapView)
     setBottomSheetImpact(treeAnnotations.currentImpact)
@@ -102,7 +101,7 @@ extension MapViewController: MKMapViewDelegate {
     var impact = TreeAnnotation.Impact(carbonOffset: 0, distanceDriven: 0, carbonStorage: 0, pollutionRemoved: 0, waterIntercepted: 0)
     
     if let clusterAnnotation = view.annotation as? ClusterAnnotation {
-      view.layer.backgroundColor = UIColor.highlightColor.cgColor
+      view.layer.backgroundColor = .highlightColor
       let treeAnnotations = clusterAnnotation.annotations as! [TreeAnnotation]
       var treeNameCounts: [String: Int] = [:]
       for annotation in treeAnnotations {
@@ -121,8 +120,9 @@ extension MapViewController: MKMapViewDelegate {
     
     if let treeAnnotation = view.annotation as? TreeAnnotation {
       let markerView = view as! TreeAnnotationView
-      markerView.markerTintColor = .highlightColor
-      markerView.glyphTintColor = .white
+      markerView.backgroundColor = .highlightColor
+      markerView.layer.borderColor = UIColor.white.cgColor
+      markerView.glyphImageView.tintColor = .white
       title = treeAnnotation.commonName
       subtitle = treeAnnotation.botanicalName
       impact = treeAnnotation.impact
@@ -131,6 +131,10 @@ extension MapViewController: MKMapViewDelegate {
     bottomSheetVC.bottomSheetTitle.text = title
     bottomSheetVC.bottomSheetSubtitle.text = subtitle
     setBottomSheetImpact(impact)
+   
+    UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
+      view.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+    })
   }
   
   func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -138,12 +142,17 @@ extension MapViewController: MKMapViewDelegate {
       clusterView.backgroundColor = .primaryColor
     }
     if let markerView = view as? TreeAnnotationView {
-      markerView.markerTintColor = .primaryColor
-      markerView.glyphTintColor = .secondaryColor
+      markerView.backgroundColor = .primaryColor
+      markerView.layer.borderColor = .secondaryColor
+      markerView.glyphImageView.tintColor = .secondaryColor
     }
     bottomSheetVC.bottomSheetTitle.text = "TreeMap: Boston College"
     bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.currentArray.count) Trees"
     setBottomSheetImpact(treeAnnotations.currentImpact)
+   
+   UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
+      view.transform = CGAffineTransform(scaleX: 1, y: 1)
+   })
   }
   
   func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -155,7 +164,6 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: ClusterManagerDelegate {
   func cellSize(for zoomLevel: Double) -> Double? {
-    print("cell size: \(min(220-(zoomLevel*10), 80))")
     return min(220-(zoomLevel*10), 80)
   }
   

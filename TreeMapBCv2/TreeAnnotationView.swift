@@ -9,21 +9,32 @@
 import Foundation
 import MapKit
 
-class TreeAnnotationView: MKMarkerAnnotationView {
+class TreeAnnotationView: MKAnnotationView {
+  let diameter = 40
+  
+  let glyphImageView: UIImageView = {
+    let glyphImage = UIImage(named: "treeGlyph")!
+    let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 20, height: 20))
+    imageView.image = glyphImage
+    imageView.tintColor = .secondaryColor
+    return imageView
+  }()
+  
   override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
     super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+    
+    addSubview(glyphImageView)
     collisionMode = .circle
+    frame.size = CGSize(width: diameter, height: diameter)
+    layer.cornerRadius = frame.width / 2
+    layer.masksToBounds = true
+    layer.borderColor = .secondaryColor
+    layer.backgroundColor = .primaryColor
+    layer.borderWidth = 1.5
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-  
-  override func prepareForDisplay() {
-    super.prepareForDisplay()
-    markerTintColor = .primaryColor
-    glyphImage = UIImage(named: "treeGlyph")
-    glyphTintColor = .secondaryColor
   }
   
   override var annotation: MKAnnotation? {
