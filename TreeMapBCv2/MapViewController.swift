@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreData
+import Cluster
 
 class MapViewController: UIViewController {
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -23,6 +24,15 @@ class MapViewController: UIViewController {
   
   let treeAnnotations = TreeAnnotations()
   
+  lazy var clusterManager: ClusterManager = { [unowned self] in
+    let manager = ClusterManager()
+    manager.delegate = self
+    manager.maxZoomLevel = 18
+    manager.minCountForClustering = 2
+    manager.clusterPosition = .nearCenter
+    return manager
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configureMapView()
@@ -31,7 +41,9 @@ class MapViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     treeAnnotations.createDefaultTreeAnnotations()
-    mapView.addAnnotations(treeAnnotations.currentArray)
+//    mapView.addAnnotations(treeAnnotations.currentArray)
+    clusterManager.add(treeAnnotations.currentArray)
+    clusterManager.reload(mapView: mapView)
     setBottomSheetImpact(treeAnnotations.currentImpact)
     bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.currentArray.count) Trees"
   }
@@ -44,7 +56,7 @@ class MapViewController: UIViewController {
     mapView.setRegion(initialRegion, animated: false)
     
     mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-    mapView.register(ClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+    mapView.register(TreeClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
   }
   
   private func addBottomSheetView() {
@@ -73,38 +85,25 @@ class MapViewController: UIViewController {
 extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     let annotationView: MKAnnotationView
-    if annotation is MKUserLocation {
-      return nil
-    } else if annotation is MKClusterAnnotation {
+    switch annotation {
+    case is ClusterAnnotation:
       annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)!
-    } else {
+    case is TreeAnnotation:
       annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)!
-    }
-    if annotationClustering == true {
-      annotationView.clusteringIdentifier = "tree"
-    } else {
-      annotationView.clusteringIdentifier = nil
+    default:
+      return nil
     }
     return annotationView
   }
   
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    let markerView = view as! MKMarkerAnnotationView
-    markerView.markerTintColor = .highlightColor
-    markerView.glyphTintColor = .white
-    
     var title = "Title"
     var subtitle = "Subtitle"
     var impact = TreeAnnotation.Impact(carbonOffset: 0, distanceDriven: 0, carbonStorage: 0, pollutionRemoved: 0, waterIntercepted: 0)
     
-    if let treeAnnotation = view.annotation as? TreeAnnotation {
-      title = treeAnnotation.commonName
-      subtitle = treeAnnotation.botanicalName
-      impact = treeAnnotation.impact
-    }
-    
-    if let clusterAnnotation = view.annotation as? MKClusterAnnotation {
-      let treeAnnotations = clusterAnnotation.memberAnnotations as! [TreeAnnotation]
+    if let clusterAnnotation = view.annotation as? ClusterAnnotation {
+      view.layer.backgroundColor = UIColor.highlightColor.cgColor
+      let treeAnnotations = clusterAnnotation.annotations as! [TreeAnnotation]
       var treeNameCounts: [String: Int] = [:]
       for annotation in treeAnnotations {
         impact.carbonOffset += annotation.impact.carbonOffset
@@ -119,15 +118,27 @@ extension MapViewController: MKMapViewDelegate {
       let otherSpeciesCount = treeNameCounts.count - 1
       subtitle = "+ \(otherSpeciesCount) other species"
     }
+    
+    if let treeAnnotation = view.annotation as? TreeAnnotation {
+      let markerView = view as! TreeAnnotationView
+      markerView.markerTintColor = .highlightColor
+      markerView.glyphTintColor = .white
+      title = treeAnnotation.commonName
+      subtitle = treeAnnotation.botanicalName
+      impact = treeAnnotation.impact
+    }
+    
     bottomSheetVC.bottomSheetTitle.text = title
     bottomSheetVC.bottomSheetSubtitle.text = subtitle
     setBottomSheetImpact(impact)
   }
   
   func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-    let markerView = view as! MKMarkerAnnotationView
-    markerView.markerTintColor = .primaryColor
-    if markerView.glyphImage != nil {
+    if let clusterView = view as? ClusterAnnotationView {
+      clusterView.backgroundColor = .primaryColor
+    }
+    if let markerView = view as? TreeAnnotationView {
+      markerView.markerTintColor = .primaryColor
       markerView.glyphTintColor = .secondaryColor
     }
     bottomSheetVC.bottomSheetTitle.text = "TreeMap: Boston College"
@@ -136,18 +147,19 @@ extension MapViewController: MKMapViewDelegate {
   }
   
   func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-    if mapView.region.span.latitudeDelta < 0.002 {
-      if annotationClustering == true {
-        toggleAnnotationClustering()
-      }
-    } else if annotationClustering == false {
-      toggleAnnotationClustering()
+    clusterManager.reload(mapView: mapView) { finished in
+//      print(finished)
     }
   }
+}
+
+extension MapViewController: ClusterManagerDelegate {
+  func cellSize(for zoomLevel: Double) -> Double? {
+    print("cell size: \(min(220-(zoomLevel*10), 80))")
+    return min(220-(zoomLevel*10), 80)
+  }
   
-  private func toggleAnnotationClustering() {
-    annotationClustering.toggle()
-    mapView.removeAnnotations(treeAnnotations.currentArray)
-    mapView.addAnnotations(treeAnnotations.currentArray)
+  func shouldClusterAnnotation(_ annotation: MKAnnotation) -> Bool {
+    return !(annotation is MKUserLocation)
   }
 }

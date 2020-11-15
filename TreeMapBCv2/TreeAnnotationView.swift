@@ -10,14 +10,9 @@ import Foundation
 import MapKit
 
 class TreeAnnotationView: MKMarkerAnnotationView {
-  
-  static let ReuseID = "treeAnnotation"
-  
   override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
     super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
     collisionMode = .circle
-    titleVisibility = .hidden
-    subtitleVisibility = .hidden
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -26,9 +21,16 @@ class TreeAnnotationView: MKMarkerAnnotationView {
   
   override func prepareForDisplay() {
     super.prepareForDisplay()
-    displayPriority = .required
     markerTintColor = .primaryColor
     glyphImage = UIImage(named: "treeGlyph")
     glyphTintColor = .secondaryColor
+  }
+  
+  override var annotation: MKAnnotation? {
+    willSet {
+      if newValue is TreeAnnotation {
+        self.displayPriority = .required
+      }
+    }
   }
 }

@@ -21,7 +21,7 @@
 		9F9C3C60254B8C9400A9E079 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C5F254B8C9400A9E079 /* TreeAnnotation.swift */; };
 		9F9C3C64254BBA1D00A9E079 /* BCTrees.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C3C63254BBA1D00A9E079 /* BCTrees.csv */; };
 		9F9C3C66254C6EED00A9E079 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */; };
-		9F9C3C68254C7A7A00A9E079 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C67254C7A7A00A9E079 /* ClusterAnnotationView.swift */; };
+		9F9C3C68254C7A7A00A9E079 /* TreeClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C67254C7A7A00A9E079 /* TreeClusterAnnotationView.swift */; };
 		9F9C3C6A254C9DAF00A9E079 /* TreeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */; };
 		9F9C3C6E254E6E8900A9E079 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C6D254E6E8800A9E079 /* Utils.swift */; };
 /* End PBXBuildFile section */
@@ -45,7 +45,7 @@
 		9F9C3C5F254B8C9400A9E079 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
 		9F9C3C63254BBA1D00A9E079 /* BCTrees.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BCTrees.csv; sourceTree = "<group>"; };
 		9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
-		9F9C3C67254C7A7A00A9E079 /* ClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterAnnotationView.swift; sourceTree = "<group>"; };
+		9F9C3C67254C7A7A00A9E079 /* TreeClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeClusterAnnotationView.swift; sourceTree = "<group>"; };
 		9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeLoader.swift; sourceTree = "<group>"; };
 		9F9C3C6D254E6E8800A9E079 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,7 +109,7 @@
 				9F9C3C5F254B8C9400A9E079 /* TreeAnnotation.swift */,
 				9F2D733525590E9200084F46 /* TreeAnnotations.swift */,
 				9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */,
-				9F9C3C67254C7A7A00A9E079 /* ClusterAnnotationView.swift */,
+				9F9C3C67254C7A7A00A9E079 /* TreeClusterAnnotationView.swift */,
 				9F9C3C4E254B802A00A9E079 /* Main.storyboard */,
 				9F32F4AF255611EA008A8430 /* BottomSheet.xib */,
 				9F9C3C54254B803000A9E079 /* Assets.xcassets */,
@@ -246,7 +246,7 @@
 				9F9C3C4D254B802A00A9E079 /* MapViewController.swift in Sources */,
 				9F9C3C49254B802A00A9E079 /* AppDelegate.swift in Sources */,
 				9F9C3C4B254B802A00A9E079 /* SceneDelegate.swift in Sources */,
-				9F9C3C68254C7A7A00A9E079 /* ClusterAnnotationView.swift in Sources */,
+				9F9C3C68254C7A7A00A9E079 /* TreeClusterAnnotationView.swift in Sources */,
 				9F9C3C53254B802A00A9E079 /* TreeMapBCv2.xcdatamodeld in Sources */,
 				9F2D733625590E9200084F46 /* TreeAnnotations.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  ClusterAnnotationView.swift
+//  TreeClusterAnnotationView.swift
 //  TreeMapBCv2
 //
 //  Created by Allen Li on 10/30/20.
@@ -8,8 +8,9 @@
 
 import Foundation
 import MapKit
+import Cluster
 
-class ClusterAnnotationView: MKMarkerAnnotationView {
+class TreeClusterAnnotationView: MKMarkerAnnotationView {
   
   static let ReuseID = "clusterAnnotation"
   
