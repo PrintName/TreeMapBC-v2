@@ -11,13 +11,10 @@ import MapKit
 import CoreData
 
 class TreeAnnotations {
-  var currentArray: [TreeAnnotation]!
-  private var defaultArray: [TreeAnnotation]!
+  var array: [TreeAnnotation]!
+  var impact: TreeAnnotation.Impact!
   
-  var currentImpact: TreeAnnotation.Impact!
-  private var defaultImpact: TreeAnnotation.Impact!
-  
-  func createDefaultTreeAnnotations() {
+  func createTreeAnnotations(filterCompoundPredicate: NSCompoundPredicate?) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let managedObjectContext = appDelegate.persistentContainer.viewContext
     
@@ -25,6 +22,9 @@ class TreeAnnotations {
     var treeImpact = TreeAnnotation.Impact()
     
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Tree")
+    if let filterCompoundPredicate = filterCompoundPredicate {
+      fetchRequest.predicate = filterCompoundPredicate
+    }
     
     do {
       let treeObjects = try managedObjectContext.fetch(fetchRequest)
@@ -58,10 +58,27 @@ class TreeAnnotations {
       print("Could not fetch. \(error), \(error.userInfo)")
     }
     
-    defaultArray = treeAnnotationArray
-    currentArray = defaultArray
-    
-    defaultImpact = treeImpact
-    currentImpact = defaultImpact
+    array = treeAnnotationArray
+    impact = treeImpact
+  }
+  
+  func createFilterCompoundPredicate(commonName: String?, botanicalName: String?, campus: String?, dbh: Double?) -> NSCompoundPredicate? {
+    var filterPredicates = [NSPredicate]()
+    if let commonName = commonName {
+      filterPredicates.append(NSPredicate(format: "commonName == %@", commonName))
+    }
+    if let botanicalName = botanicalName {
+      filterPredicates.append(NSPredicate(format: "botanicalName == %@", botanicalName))
+    }
+    if let campus = campus {
+      filterPredicates.append(NSPredicate(format: "campus == %@", campus))
+    }
+    if let dbh = dbh {
+      filterPredicates.append(NSPredicate(format: "dbh == %@", dbh))
+    }
+    if !filterPredicates.isEmpty {
+      return NSCompoundPredicate(type: .and, subpredicates: filterPredicates)
+    }
+    return nil
   }
 }

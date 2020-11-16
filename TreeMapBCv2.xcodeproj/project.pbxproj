@@ -100,15 +100,15 @@
 		9F9C3C47254B802A00A9E079 /* TreeMapBCv2 */ = {
 			isa = PBXGroup;
 			children = (
-				9F9C3C48254B802A00A9E079 /* AppDelegate.swift */,
 				9F9C3C6D254E6E8800A9E079 /* Utils.swift */,
-				9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */,
+				9F9C3C48254B802A00A9E079 /* AppDelegate.swift */,
 				9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */,
-				9F9C3C4C254B802A00A9E079 /* MapViewController.swift */,
-				9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */,
+				9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */,
 				9F9C3C5F254B8C9400A9E079 /* TreeAnnotation.swift */,
 				9F2D733525590E9200084F46 /* TreeAnnotations.swift */,
 				9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */,
+				9F9C3C4C254B802A00A9E079 /* MapViewController.swift */,
+				9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */,
 				9F9C3C67254C7A7A00A9E079 /* TreeClusterAnnotationView.swift */,
 				9F9C3C4E254B802A00A9E079 /* Main.storyboard */,
 				9F32F4AF255611EA008A8430 /* BottomSheet.xib */,

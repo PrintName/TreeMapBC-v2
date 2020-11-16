@@ -10,11 +10,11 @@ import Foundation
 import MapKit
 
 class TreeAnnotationView: MKAnnotationView {
-  let diameter = 40
+  let diameter = 36
   
   let glyphImageView: UIImageView = {
     let glyphImage = UIImage(named: "treeGlyph")!
-    let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 20, height: 20))
+    let imageView = UIImageView(frame: CGRect(x: 8, y: 8, width: 20, height: 20))
     imageView.image = glyphImage
     imageView.tintColor = .secondaryColor
     return imageView

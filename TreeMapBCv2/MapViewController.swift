@@ -18,8 +18,6 @@ class MapViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
   
-  var annotationClustering = true
-  
   var bottomSheetVC: BottomSheetViewController!
   
   let treeAnnotations = TreeAnnotations()
@@ -31,7 +29,7 @@ class MapViewController: UIViewController {
     manager.minCountForClustering = 2
     manager.clusterPosition = .nearCenter
     return manager
-  }()
+    }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -40,11 +38,8 @@ class MapViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    treeAnnotations.createDefaultTreeAnnotations()
-    clusterManager.add(treeAnnotations.currentArray)
-    clusterManager.reload(mapView: mapView)
-    setBottomSheetImpact(treeAnnotations.currentImpact)
-    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.currentArray.count) Trees"
+    treeAnnotations.createTreeAnnotations(filterCompoundPredicate: nil)
+    addTreeAnnotations()
   }
   
   private func configureMapView() {
@@ -56,6 +51,35 @@ class MapViewController: UIViewController {
     
     mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     mapView.register(TreeClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+  }
+  
+  private func addTreeAnnotations() {
+    clusterManager.removeAll()
+    clusterManager.add(treeAnnotations.array)
+    clusterManager.reload(mapView: mapView)
+    setBottomSheetImpact(treeAnnotations.impact)
+    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.array.count) Trees"
+  }
+  
+  private func filterTreeAnnotations(commonName: String?, botanicalName: String?, campus: String?, dbh: Double?) {
+    var filterPredicates = [NSPredicate]()
+    if let commonName = commonName {
+      filterPredicates.append(NSPredicate(format: "commonName == %@", commonName))
+    }
+    if let botanicalName = botanicalName {
+      filterPredicates.append(NSPredicate(format: "botanicalName == %@", botanicalName))
+    }
+    if let campus = campus {
+      filterPredicates.append(NSPredicate(format: "campus == %@", campus))
+    }
+    if let dbh = dbh {
+      filterPredicates.append(NSPredicate(format: "dbh == %@", dbh))
+    }
+    if !filterPredicates.isEmpty {
+      let filterCompoundPredicate = NSCompoundPredicate(type: .and, subpredicates: filterPredicates)
+      treeAnnotations.createTreeAnnotations(filterCompoundPredicate: filterCompoundPredicate)
+      addTreeAnnotations()
+    }
   }
   
   private func addBottomSheetView() {
@@ -147,8 +171,8 @@ extension MapViewController: MKMapViewDelegate {
       markerView.glyphImageView.tintColor = .secondaryColor
     }
     bottomSheetVC.bottomSheetTitle.text = "TreeMap: Boston College"
-    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.currentArray.count) Trees"
-    setBottomSheetImpact(treeAnnotations.currentImpact)
+    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.array.count) Trees"
+    setBottomSheetImpact(treeAnnotations.impact)
    
    UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
       view.transform = CGAffineTransform(scaleX: 1, y: 1)
@@ -156,9 +180,7 @@ extension MapViewController: MKMapViewDelegate {
   }
   
   func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-    clusterManager.reload(mapView: mapView) { finished in
-//      print(finished)
-    }
+    clusterManager.reload(mapView: mapView)
   }
 }
 
