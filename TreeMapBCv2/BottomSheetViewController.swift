@@ -53,7 +53,7 @@ class BottomSheetViewController: UIViewController {
   }
   
   @IBAction func impactButtonsTouched(_ sender: Any) {
-    UIView.animate(withDuration: 0.6, delay: 0.0, options: [.allowUserInteraction], animations: {
+    UIView.animate(withDuration: 0.5, delay: 0.0, options: [.allowUserInteraction], animations: {
       self.showFullDetail()
     }, completion: nil)
   }
@@ -74,7 +74,7 @@ class BottomSheetViewController: UIViewController {
     // Done panning
     if recognizer.state == .ended {
       var duration = velocity.y < 0 ? Double((minY - fullViewSpacing) / -velocity.y) : Double((partialViewSpacing - minY) / velocity.y)
-      duration = duration > 1.3 ? 1 : duration
+      duration = duration > 0.6 ? 0.5 : duration
       
       UIView.animate(withDuration: duration, delay: 0.0, options: [.allowUserInteraction], animations: {
         if velocity.y >= 0 {
