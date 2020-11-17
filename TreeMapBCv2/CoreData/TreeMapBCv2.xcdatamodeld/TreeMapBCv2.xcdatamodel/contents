@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E266" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Tree" representedClassName="Tree" syncable="YES" codeGenerationType="class">
+    <entity name="Species" representedClassName="Species" syncable="YES" codeGenerationType="class">
         <attribute name="botanicalName" optional="YES" attributeType="String"/>
+        <attribute name="commonName" optional="YES" attributeType="String"/>
+        <relationship name="trees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tree" inverseName="species" inverseEntity="Tree"/>
+    </entity>
+    <entity name="Tree" representedClassName="Tree" syncable="YES" codeGenerationType="class">
         <attribute name="campus" optional="YES" attributeType="String"/>
         <attribute name="carbonOffset" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="carbonStorage" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="commonName" optional="YES" attributeType="String"/>
         <attribute name="dbh" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="distanceDriven" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -13,8 +16,10 @@
         <attribute name="pollutionRemoved" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="tag" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="waterIntercepted" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="species" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Species" inverseName="trees" inverseEntity="Species"/>
     </entity>
     <elements>
-        <element name="Tree" positionX="-27" positionY="18" width="128" height="223"/>
+        <element name="Species" positionX="-2318.23046875" positionY="1293.19921875" width="128" height="88"/>
+        <element name="Tree" positionX="-2064.7421875" positionY="1252.19140625" width="128" height="208"/>
     </elements>
 </model>

@@ -18,13 +18,25 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satelliteFlyover" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRr-NI-3jO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Poh-QQ-LSh">
+                                <rect key="frame" x="20" y="44" width="374" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="TGd-8P-Od3"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="7Xe-tF-BOT" kind="embed" id="1E4-Of-Zxy"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="gRr-NI-3jO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2WY-wO-PwT"/>
                             <constraint firstItem="gRr-NI-3jO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ESk-CO-L3Z"/>
+                            <constraint firstItem="Poh-QQ-LSh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Px0-sc-wDg"/>
                             <constraint firstAttribute="bottom" secondItem="gRr-NI-3jO" secondAttribute="bottom" id="VLH-jc-bkh"/>
+                            <constraint firstItem="Poh-QQ-LSh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ly3-Jf-87Y"/>
                             <constraint firstItem="gRr-NI-3jO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="o9D-8N-rgC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Poh-QQ-LSh" secondAttribute="trailing" constant="20" id="whp-J6-DKi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -35,6 +47,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
+        </scene>
+        <!--Search Bar View Controller-->
+        <scene sceneID="m2I-D2-vOs">
+            <objects>
+                <viewController id="7Xe-tF-BOT" customClass="SearchBarViewController" customModule="TreeMapBCv2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jso-W4-t36">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Filter by: common name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xaY-oJ-pLn">
+                                <rect key="frame" x="16" y="8" width="280" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="cig-VO-DTJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vm-n8-R1Q">
+                                <rect key="frame" x="312" y="8" width="46" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="6UE-g4-fBo"/>
+                                    <constraint firstAttribute="width" constant="46" id="ANg-nH-Aam"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bah-xl-2FX">
+                                <rect key="frame" x="16" y="52" width="342" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="UCC-qw-w0I"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8Vm-n8-R1Q" firstAttribute="top" secondItem="jso-W4-t36" secondAttribute="top" constant="8" id="0Hm-oe-T6I"/>
+                            <constraint firstAttribute="trailing" secondItem="8Vm-n8-R1Q" secondAttribute="trailing" constant="16" id="8Zh-Mb-BSd"/>
+                            <constraint firstItem="8Vm-n8-R1Q" firstAttribute="leading" secondItem="xaY-oJ-pLn" secondAttribute="trailing" constant="16" id="G89-1m-qFP"/>
+                            <constraint firstItem="B4N-nT-Kon" firstAttribute="trailing" secondItem="Bah-xl-2FX" secondAttribute="trailing" constant="16" id="T6Y-dQ-8g8"/>
+                            <constraint firstItem="Bah-xl-2FX" firstAttribute="top" secondItem="B4N-nT-Kon" secondAttribute="top" constant="8" id="TWf-Ee-lY8"/>
+                            <constraint firstItem="xaY-oJ-pLn" firstAttribute="leading" secondItem="jso-W4-t36" secondAttribute="leading" constant="16" id="UDr-R9-1UP"/>
+                            <constraint firstItem="Bah-xl-2FX" firstAttribute="leading" secondItem="B4N-nT-Kon" secondAttribute="leading" constant="16" id="n9u-cg-zVt"/>
+                            <constraint firstItem="xaY-oJ-pLn" firstAttribute="top" secondItem="jso-W4-t36" secondAttribute="top" constant="8" id="rak-3P-XgA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="B4N-nT-Kon"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBarView" destination="jso-W4-t36" id="y7f-16-dbE"/>
+                        <outlet property="searchTextField" destination="xaY-oJ-pLn" id="2CG-Bm-9NW"/>
+                        <outlet property="selectionButton" destination="8Vm-n8-R1Q" id="RWf-z1-jFk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D7h-iB-mF4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1111.5942028985507" y="-127.23214285714285"/>
         </scene>
     </scenes>
 </document>

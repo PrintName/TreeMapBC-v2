@@ -34,8 +34,6 @@ class TreeAnnotations {
         let latitude = object.value(forKey: "latitude") as! Double
         let longitude = object.value(forKey: "longitude") as! Double
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let commonName = object.value(forKey: "commonName") as! String
-        let botanicalName = object.value(forKey: "botanicalName") as! String
         let campus = object.value(forKey: "campus") as! String
         let dbh = object.value(forKey: "dbh") as! Double
         let carbonOffset = object.value(forKey: "carbonOffset") as! Double
@@ -43,6 +41,10 @@ class TreeAnnotations {
         let carbonStorage = object.value(forKey: "carbonStorage") as! Double
         let pollutionRemoved = object.value(forKey: "pollutionRemoved") as! Double
         let waterIntercepted = object.value(forKey: "waterIntercepted") as! Double
+        
+        let species = object.value(forKey: "species") as! Species
+        let commonName = species.commonName!
+        let botanicalName = species.botanicalName!
         
         let treeAnnotation = TreeAnnotation(tag: tag, coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, impact: TreeAnnotation.Impact(carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted))
         treeAnnotationArray.append(treeAnnotation)
@@ -60,25 +62,5 @@ class TreeAnnotations {
     
     array = treeAnnotationArray
     impact = treeImpact
-  }
-  
-  func createFilterCompoundPredicate(commonName: String?, botanicalName: String?, campus: String?, dbh: Double?) -> NSCompoundPredicate? {
-    var filterPredicates = [NSPredicate]()
-    if let commonName = commonName {
-      filterPredicates.append(NSPredicate(format: "commonName == %@", commonName))
-    }
-    if let botanicalName = botanicalName {
-      filterPredicates.append(NSPredicate(format: "botanicalName == %@", botanicalName))
-    }
-    if let campus = campus {
-      filterPredicates.append(NSPredicate(format: "campus == %@", campus))
-    }
-    if let dbh = dbh {
-      filterPredicates.append(NSPredicate(format: "dbh == %@", dbh))
-    }
-    if !filterPredicates.isEmpty {
-      return NSCompoundPredicate(type: .and, subpredicates: filterPredicates)
-    }
-    return nil
   }
 }

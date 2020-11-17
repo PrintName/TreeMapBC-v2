@@ -64,10 +64,10 @@ class MapViewController: UIViewController {
   private func filterTreeAnnotations(commonName: String?, botanicalName: String?, campus: String?, dbh: Double?) {
     var filterPredicates = [NSPredicate]()
     if let commonName = commonName {
-      filterPredicates.append(NSPredicate(format: "commonName == %@", commonName))
+      filterPredicates.append(NSPredicate(format: "ANY species.commonName == %@", commonName))
     }
     if let botanicalName = botanicalName {
-      filterPredicates.append(NSPredicate(format: "botanicalName == %@", botanicalName))
+      filterPredicates.append(NSPredicate(format: "ANY species.botanicalName == %@", botanicalName))
     }
     if let campus = campus {
       filterPredicates.append(NSPredicate(format: "campus == %@", campus))

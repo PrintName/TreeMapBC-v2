@@ -18,16 +18,16 @@ extension UIApplicationDelegate {
     
     clearData()
     
-    let entity = NSEntityDescription.entity(forEntityName: "Tree", in: managedContext)!
+    let speciesEntity = NSEntityDescription.entity(forEntityName: "Species", in: managedContext)!
+    let treeEntity = NSEntityDescription.entity(forEntityName: "Tree", in: managedContext)!
     
     let treeDataArray = parseBCTreesCSV()
     for treeData in treeDataArray {
-      let tree = NSManagedObject(entity: entity, insertInto: managedContext)
+      // Tree
+      let tree = NSManagedObject(entity: treeEntity, insertInto: managedContext) as! Tree
       tree.setValue(treeData.tag, forKeyPath: "tag")
       tree.setValue(treeData.latitude, forKeyPath: "latitude")
       tree.setValue(treeData.longitude, forKeyPath: "longitude")
-      tree.setValue(treeData.commonName, forKeyPath: "commonName")
-      tree.setValue(treeData.botanicalName, forKeyPath: "botanicalName")
       tree.setValue(treeData.campus, forKeyPath: "campus")
       tree.setValue(treeData.dbh, forKeyPath: "dbh")
       tree.setValue(treeData.carbonOffset, forKeyPath: "carbonOffset")
@@ -35,6 +35,23 @@ extension UIApplicationDelegate {
       tree.setValue(treeData.carbonStorage, forKeyPath: "carbonStorage")
       tree.setValue(treeData.pollutionRemoved, forKeyPath: "pollutionRemoved")
       tree.setValue(treeData.waterIntercepted, forKeyPath: "waterIntercepted")
+      // Species
+      var species: Species!
+      let speciesRequest = NSFetchRequest<NSManagedObject>(entityName: "Species")
+      speciesRequest.predicate = NSPredicate(format: "commonName == %@", treeData.commonName)
+      // Species already exists
+      if let fetchedSpecies = try? managedContext.fetch(speciesRequest) {
+        if fetchedSpecies.count > 0 {
+          species = fetchedSpecies[0] as? Species
+        }
+      }
+      // Create new species
+      if species == nil {
+        species = NSManagedObject(entity: speciesEntity, insertInto: managedContext) as! Species
+        species.setValue(treeData.commonName, forKey: "commonName")
+        species.setValue(treeData.botanicalName, forKey: "botanicalName")
+      }
+      species.addToTrees(tree)
     }
     do {
       try managedContext.save()
@@ -85,7 +102,7 @@ extension UIApplicationDelegate {
       try managedContext.execute(deleteRequest)
       managedContext.reset()
     } catch let error as NSError {
-      print("ERROR: Could not clear data❗️\n\(error)")
+      print("❗️ERROR: Could not clear data❗️\n\(error)")
     }
   }
 }
