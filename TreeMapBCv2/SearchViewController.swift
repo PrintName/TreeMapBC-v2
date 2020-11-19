@@ -17,8 +17,9 @@ class SearchViewController: UIViewController {
   @IBOutlet weak var searchTextField: UITextField!
   @IBOutlet weak var cancelButton: UIButton!
   @IBOutlet weak var campusSegmentedControl: UISegmentedControl!
-  
   @IBOutlet weak var searchResultTableView: UITableView!
+  
+  var searchFieldViewShadow: UIView!
   
   var speciesArray = [Species]()
   
@@ -30,7 +31,16 @@ class SearchViewController: UIViewController {
     campusSegmentedControl.setBackgroundImage(clearImage, for: .selected, barMetrics: .default)
     campusSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.highlightColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)], for: .selected)
     campusSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.highlightColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)], for: .highlighted)
-
+    
+    searchFieldViewShadow = UIView(frame: searchFieldView.frame)
+    searchView.addSubview(searchFieldViewShadow)
+    searchView.sendSubviewToBack(searchFieldViewShadow)
+    searchFieldViewShadow.layer.shadowColor = UIColor.black.cgColor
+    searchFieldViewShadow.layer.shadowOpacity = 0.5
+    searchFieldViewShadow.layer.shadowOffset = .zero
+    searchFieldViewShadow.layer.shadowRadius = 4
+    searchFieldViewShadow.layer.shadowPath = UIBezierPath(rect: searchFieldViewShadow.bounds).cgPath
+    
     searchFieldView.layer.shadowColor = UIColor.black.cgColor
     searchFieldView.layer.shadowOpacity = 0.5
     searchFieldView.layer.shadowOffset = .zero
@@ -57,12 +67,14 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
+    fadeSearchFieldViewShadow()
     searchResultTableView.isUserInteractionEnabled = true
     showSearchResultTableView()
     showCampusSegmentedControl()
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
+    showSearchFieldViewShadow()
     searchResultTableView.isUserInteractionEnabled = false
     hideSearchResultTableView()
     hideCampusSegmentedControl()
@@ -100,6 +112,20 @@ extension SearchViewController: UITextFieldDelegate {
       guard let self = self else { return }
       self.searchBarViewHeight.constant = 42
       self.view.layoutIfNeeded()
+    })
+  }
+  
+  private func showSearchFieldViewShadow() {
+    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+      guard let self = self else { return }
+      self.searchFieldViewShadow.layer.shadowOpacity = 0.5
+    })
+  }
+  
+  private func fadeSearchFieldViewShadow() {
+    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+      guard let self = self else { return }
+      self.searchFieldViewShadow.layer.shadowOpacity = 0
     })
   }
   
