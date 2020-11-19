@@ -76,7 +76,7 @@ class MapViewController: UIViewController {
     clusterManager.add(treeAnnotations.array)
     clusterManager.reload(mapView: mapView)
     setBottomSheetImpact(treeAnnotations.impact)
-    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.array.count) Trees"
+    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.array.count) trees"
   }
   
   private func addKeyboardNotifications() {
@@ -208,7 +208,7 @@ extension MapViewController: MKMapViewDelegate {
       markerView.glyphImageView.tintColor = .secondaryColor
     }
     bottomSheetVC.bottomSheetTitle.text = "TreeMap: Boston College"
-    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.array.count) Trees"
+    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.array.count) trees"
     setBottomSheetImpact(treeAnnotations.impact)
    
    UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
