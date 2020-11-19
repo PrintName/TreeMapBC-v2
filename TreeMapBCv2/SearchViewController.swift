@@ -12,6 +12,7 @@ import CoreData
 class SearchViewController: UIViewController {
   @IBOutlet var searchView: UIView!
   @IBOutlet weak var searchBarView: UIView!
+  @IBOutlet weak var searchBarViewHeight: NSLayoutConstraint!
   @IBOutlet weak var searchFieldView: UIView!
   @IBOutlet weak var searchTextField: UITextField!
   @IBOutlet weak var cancelButton: UIButton!
@@ -37,41 +38,72 @@ class SearchViewController: UIViewController {
     searchFieldView.layer.shadowPath = UIBezierPath(rect: searchFieldView.bounds).cgPath
     searchBarView.layer.masksToBounds = true
     searchBarView.layer.cornerRadius = 5
+    searchBarViewHeight.constant = 42
     
     searchResultTableView.layer.masksToBounds = true
     searchResultTableView.layer.cornerRadius = 5
     searchResultTableView.delegate = self
     searchResultTableView.dataSource = self
     
+    searchResultTableView.alpha = 0
     searchResultTableView.isHidden = true
-    
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(keyboardWillShow),
-      name: UIResponder.keyboardWillShowNotification,
-      object: nil
-    )
   }
   
-  @objc func keyboardWillShow(_ notification: NSNotification) {
-    let info = notification.userInfo!
-    let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-    print(keyboardFrame.height)
+  @IBAction func cancelButtonTouched(_ sender: Any) {
+    searchTextField.text = ""
+    searchTextField.resignFirstResponder()
   }
 }
 
 extension SearchViewController: UITextFieldDelegate {
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    searchResultTableView.isUserInteractionEnabled = true
+    showSearchResultTableView()
+    showCampusSegmentedControl()
+  }
+  
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    searchResultTableView.isUserInteractionEnabled = false
+    hideSearchResultTableView()
+    hideCampusSegmentedControl()
+  }
+  
+  private func showSearchResultTableView() {
+    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+      guard let self = self else { return }
+      self.searchResultTableView.isHidden = false
+      self.searchResultTableView.alpha = 1
+      self.view.layoutIfNeeded()
+    })
+  }
+  
+  private func hideSearchResultTableView() {
+    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+      guard let self = self else { return }
+      self.searchResultTableView.alpha = 0
+      self.view.layoutIfNeeded()
+    }, completion: { _ in
+      self.searchResultTableView.isHidden = true
+    })
+  }
+  
+  private func showCampusSegmentedControl() {
+    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+      guard let self = self else { return }
+      self.searchBarViewHeight.constant = 80
+      self.view.layoutIfNeeded()
+    })
+  }
+  
+  private func hideCampusSegmentedControl() {
+    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+      guard let self = self else { return }
+      self.searchBarViewHeight.constant = 42
+      self.view.layoutIfNeeded()
+    })
+  }
+  
   func textFieldDidChangeSelection(_ textField: UITextField) {
-    if let searchText = textField.text {
-      if searchText.isEmpty {
-        searchResultTableView.isUserInteractionEnabled = false
-        searchResultTableView.isHidden = true
-      } else {
-        searchResultTableView.isUserInteractionEnabled = true
-        searchResultTableView.isHidden = false
-      }
-    }
-    
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let managedObjectContext = appDelegate.persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Species")

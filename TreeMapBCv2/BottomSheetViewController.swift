@@ -22,6 +22,7 @@ class BottomSheetViewController: UIViewController {
   
   @IBOutlet weak var bottomSheetImpact: UILabel!
   
+  let screenHeight: CGFloat = UIScreen.main.bounds.height
   let fullViewSpacing: CGFloat = UIScreen.main.bounds.height - 375
   let partialViewSpacing: CGFloat = UIScreen.main.bounds.height - 165
   
@@ -33,10 +34,23 @@ class BottomSheetViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
-    UIView.animate(withDuration: 0.3) { [weak self] in
-      let frame = self!.view.frame
-      self!.view.frame = .init(x: 0, y: self!.partialViewSpacing, width: frame.width, height: frame.height)
-    }
+    animateShow()
+  }
+  
+  func animateShow() {
+    UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+      guard let self = self else { return }
+      let frame = self.view.frame
+      self.view.frame = .init(x: 0, y: self.partialViewSpacing, width: frame.width, height: frame.height)
+    })
+  }
+  
+  func animateHide() {
+    UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+      guard let self = self else { return }
+      let frame = self.view.frame
+      self.view.frame = .init(x: 0, y: self.screenHeight, width: frame.width, height: frame.height)
+    })
   }
   
   func configureBottonSheetView() {

@@ -12,11 +12,15 @@ import CoreData
 import Cluster
 
 class MapViewController: UIViewController {
+  // MARK: - Properties
+  
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
   
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var searchView: PassthroughView!
+  @IBOutlet weak var searchViewHeight: NSLayoutConstraint!
   
   var bottomSheetVC: BottomSheetViewController!
   
@@ -31,15 +35,13 @@ class MapViewController: UIViewController {
     return manager
     }()
   
+  // MARK: - Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configureMapView()
     addBottomSheetView()
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    treeAnnotations.createTreeAnnotations(filterCompoundPredicate: nil)
-    addTreeAnnotations()
+    addKeyboardNotifications()
   }
   
   private func configureMapView() {
@@ -53,35 +55,6 @@ class MapViewController: UIViewController {
     mapView.register(TreeClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
   }
   
-  private func addTreeAnnotations() {
-    clusterManager.removeAll()
-    clusterManager.add(treeAnnotations.array)
-    clusterManager.reload(mapView: mapView)
-    setBottomSheetImpact(treeAnnotations.impact)
-    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.array.count) Trees"
-  }
-  
-  private func filterTreeAnnotations(commonName: String?, botanicalName: String?, campus: String?, dbh: Double?) {
-    var filterPredicates = [NSPredicate]()
-    if let commonName = commonName {
-      filterPredicates.append(NSPredicate(format: "ANY species.commonName == %@", commonName))
-    }
-    if let botanicalName = botanicalName {
-      filterPredicates.append(NSPredicate(format: "ANY species.botanicalName == %@", botanicalName))
-    }
-    if let campus = campus {
-      filterPredicates.append(NSPredicate(format: "campus == %@", campus))
-    }
-    if let dbh = dbh {
-      filterPredicates.append(NSPredicate(format: "dbh == %@", dbh))
-    }
-    if !filterPredicates.isEmpty {
-      let filterCompoundPredicate = NSCompoundPredicate(type: .and, subpredicates: filterPredicates)
-      treeAnnotations.createTreeAnnotations(filterCompoundPredicate: filterCompoundPredicate)
-      addTreeAnnotations()
-    }
-  }
-  
   private func addBottomSheetView() {
     bottomSheetVC = BottomSheetViewController()
     
@@ -91,6 +64,70 @@ class MapViewController: UIViewController {
     let height = view.frame.height
     let width  = view.frame.width
     bottomSheetVC.view.frame = .init(x: 0, y: self.view.frame.maxY, width: width, height: height)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    treeAnnotations.createTreeAnnotations(filterCompoundPredicate: nil)
+    addTreeAnnotations()
+  }
+  
+  private func addTreeAnnotations() {
+    clusterManager.removeAll()
+    clusterManager.add(treeAnnotations.array)
+    clusterManager.reload(mapView: mapView)
+    setBottomSheetImpact(treeAnnotations.impact)
+    bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.array.count) Trees"
+  }
+  
+  private func addKeyboardNotifications() {
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(keyboardWillShow),
+      name: UIResponder.keyboardWillShowNotification,
+      object: nil
+    )
+    
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(keyboardWillHide),
+      name: UIResponder.keyboardWillHideNotification,
+      object: nil
+    )
+  }
+  
+  // MARK: - Actions
+  
+  @objc func keyboardWillShow(_ notification: NSNotification) {
+    let info = notification.userInfo!
+    let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+    let topSafeArea = view.safeAreaInsets.top
+    let screenHeight = UIScreen.main.bounds.height - topSafeArea
+    let keyboardHeight = keyboardFrame.height
+    
+    searchViewHeight.constant = screenHeight - keyboardHeight - 20
+    bottomSheetVC.animateHide()
+    fadeMapView()
+  }
+  
+  @objc func keyboardWillHide(_ notification: NSNotification) {
+    bottomSheetVC.animateShow()
+    showMapView()
+  }
+  
+  private func showMapView() {
+    mapView.isUserInteractionEnabled = true
+    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+      guard let self = self else { return }
+      self.mapView.alpha = 1
+    })
+  }
+  
+  private func fadeMapView() {
+    mapView.isUserInteractionEnabled = false
+    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+      guard let self = self else { return }
+      self.mapView.alpha = 0.5
+    })
   }
   
   private func setBottomSheetImpact(_ impact: TreeAnnotation.Impact) {

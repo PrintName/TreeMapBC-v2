@@ -21,14 +21,14 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Poh-QQ-LSh" customClass="PassthroughView" customModule="TreeMapBCv2" customModuleProvider="target">
                                 <rect key="frame" x="20" y="44" width="374" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="TGd-8P-Od3"/>
+                                    <constraint firstAttribute="height" constant="200" id="4kf-V9-2wB"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="7Xe-tF-BOT" kind="embed" identifier="SearchBarSegue" id="1E4-Of-Zxy"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gRr-NI-3jO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2WY-wO-PwT"/>
                             <constraint firstItem="gRr-NI-3jO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ESk-CO-L3Z"/>
@@ -42,6 +42,8 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="gRr-NI-3jO" id="aFk-LM-lnm"/>
+                        <outlet property="searchView" destination="Poh-QQ-LSh" id="02B-V8-rwd"/>
+                        <outlet property="searchViewHeight" destination="4kf-V9-2wB" id="j6X-XF-Pfb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -82,14 +84,18 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vm-n8-R1Q">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vm-n8-R1Q">
                                                 <rect key="frame" x="340" y="0.0" width="34" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="34" id="ANg-nH-Aam"/>
                                                 </constraints>
-                                                <state key="normal" title="X">
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="multiply" catalog="system">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="cancelButtonTouched:" destination="7Xe-tF-BOT" eventType="touchUpInside" id="7VD-dp-3Mv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.98933217005076146" green="0.93103521286002022" blue="0.75614434128779606" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -156,11 +162,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="DIY-hp-d46" firstAttribute="top" secondItem="jso-W4-t36" secondAttribute="top" constant="100" id="4iu-66-qrY"/>
                             <constraint firstItem="B4N-nT-Kon" firstAttribute="trailing" secondItem="DIY-hp-d46" secondAttribute="trailing" id="9KQ-dG-eja"/>
                             <constraint firstItem="IDC-DW-LUG" firstAttribute="trailing" secondItem="B4N-nT-Kon" secondAttribute="trailing" id="CMz-zT-bSR"/>
                             <constraint firstItem="IDC-DW-LUG" firstAttribute="leading" secondItem="B4N-nT-Kon" secondAttribute="leading" id="EUt-Gi-sBv"/>
                             <constraint firstItem="B4N-nT-Kon" firstAttribute="bottom" secondItem="DIY-hp-d46" secondAttribute="bottom" id="YHB-sd-sGs"/>
-                            <constraint firstItem="DIY-hp-d46" firstAttribute="top" secondItem="IDC-DW-LUG" secondAttribute="bottom" constant="20" id="hxQ-DB-hPx"/>
                             <constraint firstItem="IDC-DW-LUG" firstAttribute="top" secondItem="jso-W4-t36" secondAttribute="top" id="nQv-8Q-aak"/>
                             <constraint firstItem="DIY-hp-d46" firstAttribute="leading" secondItem="B4N-nT-Kon" secondAttribute="leading" id="wEk-4c-nmV"/>
                         </constraints>
@@ -170,6 +176,7 @@
                         <outlet property="campusSegmentedControl" destination="5Qa-5t-IS6" id="8cn-1Y-jfz"/>
                         <outlet property="cancelButton" destination="8Vm-n8-R1Q" id="RWf-z1-jFk"/>
                         <outlet property="searchBarView" destination="IDC-DW-LUG" id="IPO-IH-Gdc"/>
+                        <outlet property="searchBarViewHeight" destination="CNN-bb-Dae" id="9IQ-zM-T55"/>
                         <outlet property="searchFieldView" destination="t58-J8-MOR" id="5Ow-70-4Ld"/>
                         <outlet property="searchResultTableView" destination="DIY-hp-d46" id="lTw-T7-ovo"/>
                         <outlet property="searchTextField" destination="xaY-oJ-pLn" id="2CG-Bm-9NW"/>
@@ -181,4 +188,7 @@
             <point key="canvasLocation" x="1013" y="-96"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="multiply" catalog="system" width="128" height="111"/>
+    </resources>
 </document>
