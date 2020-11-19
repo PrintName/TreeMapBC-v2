@@ -24,7 +24,8 @@
 		9F9C3C68254C7A7A00A9E079 /* TreeClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C67254C7A7A00A9E079 /* TreeClusterAnnotationView.swift */; };
 		9F9C3C6A254C9DAF00A9E079 /* TreeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */; };
 		9F9C3C6E254E6E8900A9E079 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C6D254E6E8800A9E079 /* Utils.swift */; };
-		9FEB838F25633D16005AFFE7 /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEB838E25633D16005AFFE7 /* SearchBarViewController.swift */; };
+		9FEB838F25633D16005AFFE7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEB838E25633D16005AFFE7 /* SearchViewController.swift */; };
+		9FEB83AC2565E677005AFFE7 /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEB83AB2565E677005AFFE7 /* PassthroughView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,9 +50,10 @@
 		9F9C3C67254C7A7A00A9E079 /* TreeClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeClusterAnnotationView.swift; sourceTree = "<group>"; };
 		9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeLoader.swift; sourceTree = "<group>"; };
 		9F9C3C6D254E6E8800A9E079 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		9FEB838E25633D16005AFFE7 /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
+		9FEB838E25633D16005AFFE7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9FEB83A5256385B2005AFFE7 /* Species+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Species+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9FEB83A6256385B2005AFFE7 /* Species+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Species+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9FEB83AB2565E677005AFFE7 /* PassthroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassthroughView.swift; path = ../../../../../.Trash/PassthroughView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,10 +113,11 @@
 				9F9C3C5F254B8C9400A9E079 /* TreeAnnotation.swift */,
 				9F2D733525590E9200084F46 /* TreeAnnotations.swift */,
 				9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */,
-				9F9C3C4C254B802A00A9E079 /* MapViewController.swift */,
-				9FEB838E25633D16005AFFE7 /* SearchBarViewController.swift */,
-				9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */,
 				9F9C3C67254C7A7A00A9E079 /* TreeClusterAnnotationView.swift */,
+				9F9C3C4C254B802A00A9E079 /* MapViewController.swift */,
+				9FEB838E25633D16005AFFE7 /* SearchViewController.swift */,
+				9FEB83AB2565E677005AFFE7 /* PassthroughView.swift */,
+				9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */,
 				9F9C3C4E254B802A00A9E079 /* Main.storyboard */,
 				9F32F4AF255611EA008A8430 /* BottomSheet.xib */,
 				9F9C3C54254B803000A9E079 /* Assets.xcassets */,
@@ -255,12 +258,13 @@
 			files = (
 				9F9C3C66254C6EED00A9E079 /* TreeAnnotationView.swift in Sources */,
 				9F9C3C60254B8C9400A9E079 /* TreeAnnotation.swift in Sources */,
-				9FEB838F25633D16005AFFE7 /* SearchBarViewController.swift in Sources */,
+				9FEB838F25633D16005AFFE7 /* SearchViewController.swift in Sources */,
 				9F9C3C6E254E6E8900A9E079 /* Utils.swift in Sources */,
 				9F32F4B0255611EA008A8430 /* BottomSheetViewController.swift in Sources */,
 				9F9C3C6A254C9DAF00A9E079 /* TreeLoader.swift in Sources */,
 				9F9C3C4D254B802A00A9E079 /* MapViewController.swift in Sources */,
 				9F9C3C49254B802A00A9E079 /* AppDelegate.swift in Sources */,
+				9FEB83AC2565E677005AFFE7 /* PassthroughView.swift in Sources */,
 				9F9C3C4B254B802A00A9E079 /* SceneDelegate.swift in Sources */,
 				9F9C3C68254C7A7A00A9E079 /* TreeClusterAnnotationView.swift in Sources */,
 				9F9C3C53254B802A00A9E079 /* TreeMapBCv2.xcdatamodeld in Sources */,

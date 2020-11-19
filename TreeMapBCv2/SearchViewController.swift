@@ -11,10 +11,15 @@ import CoreData
 
 class SearchViewController: UIViewController {
   @IBOutlet var searchView: UIView!
+  @IBOutlet weak var searchBarView: UIView!
   @IBOutlet weak var searchFieldView: UIView!
   @IBOutlet weak var searchTextField: UITextField!
   @IBOutlet weak var cancelButton: UIButton!
   @IBOutlet weak var campusSegmentedControl: UISegmentedControl!
+  
+  @IBOutlet weak var searchResultTableView: UITableView!
+  
+  var speciesArray = [Species]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,8 +35,15 @@ class SearchViewController: UIViewController {
     searchFieldView.layer.shadowOffset = .zero
     searchFieldView.layer.shadowRadius = 4
     searchFieldView.layer.shadowPath = UIBezierPath(rect: searchFieldView.bounds).cgPath
-    searchView.layer.masksToBounds = true
-    searchView.layer.cornerRadius = 5
+    searchBarView.layer.masksToBounds = true
+    searchBarView.layer.cornerRadius = 5
+    
+    searchResultTableView.layer.masksToBounds = true
+    searchResultTableView.layer.cornerRadius = 5
+    searchResultTableView.delegate = self
+    searchResultTableView.dataSource = self
+    
+    searchResultTableView.isHidden = true
     
     NotificationCenter.default.addObserver(
       self,
@@ -50,16 +62,39 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITextFieldDelegate {
   func textFieldDidChangeSelection(_ textField: UITextField) {
+    if let searchText = textField.text {
+      if searchText.isEmpty {
+        searchResultTableView.isUserInteractionEnabled = false
+        searchResultTableView.isHidden = true
+      } else {
+        searchResultTableView.isUserInteractionEnabled = true
+        searchResultTableView.isHidden = false
+      }
+    }
+    
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let managedObjectContext = appDelegate.persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Species")
     fetchRequest.predicate = NSPredicate(format: "commonName CONTAINS '\(textField.text?.capitalized ?? "")'")
     do {
-      if let speciesObjects = try managedObjectContext.fetch(fetchRequest) as? [Species] {
-        for species in speciesObjects {
-          print(species.commonName)
-        }
+      if let species = try managedObjectContext.fetch(fetchRequest) as? [Species] {
+        speciesArray = species
+        searchResultTableView.reloadData()
       }
     } catch {}
+  }
+}
+
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return speciesArray.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "SpeciesCell", for: indexPath)
+    let species = speciesArray[indexPath.row]
+    cell.textLabel?.text = species.commonName
+    cell.detailTextLabel?.text = species.botanicalName
+    return cell
   }
 }
