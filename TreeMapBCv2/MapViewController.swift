@@ -48,9 +48,6 @@ class MapViewController: UIViewController {
     mapView.delegate = self
     
     let initialLocation = CLLocation(latitude: 42.3361, longitude: -71.1677)
-//    let initialRegion = MKCoordinateRegion(center: initialLocation.coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.01))
-//    mapView.setRegion(initialRegion, animated: false)
-    
     let mapCamera = MKMapCamera(lookingAtCenter: initialLocation.coordinate, fromDistance: 4000, pitch: 22.5, heading: 0)
     mapView.setCamera(mapCamera, animated: false)
     
