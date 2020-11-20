@@ -62,7 +62,7 @@ class BottomSheetViewController: UIViewController {
     bottomSheetView.layer.shadowColor = UIColor.black.cgColor
     bottomSheetView.layer.shadowOpacity = 0.5
     bottomSheetView.layer.shadowOffset = .zero
-    bottomSheetView.layer.shadowRadius = 10
+    bottomSheetView.layer.shadowRadius = 6
     bottomSheetView.layer.shadowPath = UIBezierPath(rect: bottomSheetView.bounds).cgPath
   }
   
