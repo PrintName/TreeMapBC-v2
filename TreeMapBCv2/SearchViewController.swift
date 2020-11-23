@@ -26,12 +26,20 @@ class SearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     searchTextField.delegate = self
+    configureCampusSegmentedControl()
+    configureSearchView()
+    configureSearchResultTableView()
+  }
+  
+  private func configureCampusSegmentedControl() {
     let clearImage = UIImage(color: .clear)
     campusSegmentedControl.setBackgroundImage(clearImage, for: .normal, barMetrics: .default)
     campusSegmentedControl.setBackgroundImage(clearImage, for: .selected, barMetrics: .default)
     campusSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.highlightColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)], for: .selected)
     campusSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.highlightColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)], for: .highlighted)
-    
+  }
+  
+  private func configureSearchView() {
     searchFieldViewShadow = UIView(frame: searchFieldView.frame)
     searchView.addSubview(searchFieldViewShadow)
     searchView.sendSubviewToBack(searchFieldViewShadow)
@@ -49,7 +57,9 @@ class SearchViewController: UIViewController {
     searchBarView.layer.masksToBounds = true
     searchBarView.layer.cornerRadius = 5
     searchBarViewHeight.constant = 42
-    
+  }
+  
+  private func configureSearchResultTableView() {
     searchResultTableView.layer.masksToBounds = true
     searchResultTableView.layer.cornerRadius = 5
     searchResultTableView.delegate = self
