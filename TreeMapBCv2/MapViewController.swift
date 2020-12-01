@@ -95,6 +95,15 @@ class MapViewController: UIViewController {
     )
   }
   
+  // MARK: - Navigation
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if (segue.identifier == "SearchBarSegue") {
+      let searchVC = segue.destination as! SearchViewController
+      searchVC.delegate = self
+    }
+  }
+  
   // MARK: - Actions
   
   @objc func keyboardWillShow(_ notification: NSNotification) {
@@ -228,5 +237,17 @@ extension MapViewController: ClusterManagerDelegate {
   
   func shouldClusterAnnotation(_ annotation: MKAnnotation) -> Bool {
     return !(annotation is MKUserLocation)
+  }
+}
+
+extension MapViewController: SearchFilterDelegate {
+  func speciesFilterSelected(species: Species, campus: String?) {
+    treeAnnotations.createFilteredTreeAnnotations(species: species, campus: campus)
+    addTreeAnnotations()
+  }
+  
+  func speciesFilterCanceled() {
+    treeAnnotations.createTreeAnnotations(filterCompoundPredicate: nil)
+    addTreeAnnotations()
   }
 }

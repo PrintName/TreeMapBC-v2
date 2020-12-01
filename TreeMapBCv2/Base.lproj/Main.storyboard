@@ -79,15 +79,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t58-J8-MOR">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="42"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search by species or tag..." textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xaY-oJ-pLn">
-                                                <rect key="frame" x="16" y="0.0" width="324" height="42"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search by species..." textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xaY-oJ-pLn">
+                                                <rect key="frame" x="16" y="0.0" width="318" height="42"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vm-n8-R1Q">
-                                                <rect key="frame" x="340" y="0.0" width="34" height="42"/>
+                                                <rect key="frame" x="334" y="0.0" width="40" height="42"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="34" id="ANg-nH-Aam"/>
+                                                    <constraint firstAttribute="width" constant="40" id="ANg-nH-Aam"/>
                                                 </constraints>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="multiply" catalog="system">

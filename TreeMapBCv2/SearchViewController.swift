@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 
+protocol SearchFilterDelegate: class {
+  func speciesFilterSelected(species: Species, campus: String?)
+  func speciesFilterCanceled()
+}
+
 class SearchViewController: UIViewController {
   @IBOutlet var searchView: UIView!
   @IBOutlet weak var searchBarView: UIView!
@@ -18,6 +23,8 @@ class SearchViewController: UIViewController {
   @IBOutlet weak var cancelButton: UIButton!
   @IBOutlet weak var campusSegmentedControl: UISegmentedControl!
   @IBOutlet weak var searchResultTableView: UITableView!
+  
+  weak var delegate: SearchFilterDelegate!
   
   var searchFieldViewShadow: UIView!
   
@@ -57,6 +64,8 @@ class SearchViewController: UIViewController {
     searchBarView.layer.masksToBounds = true
     searchBarView.layer.cornerRadius = 5
     searchBarViewHeight.constant = 42
+    
+    cancelButton.isHidden = true
   }
   
   private func configureSearchResultTableView() {
@@ -72,6 +81,9 @@ class SearchViewController: UIViewController {
   @IBAction func cancelButtonTouched(_ sender: Any) {
     searchTextField.text = ""
     searchTextField.resignFirstResponder()
+    delegate.speciesFilterCanceled()
+    campusSegmentedControl.selectedSegmentIndex = 0
+    cancelButton.isHidden = true
   }
 }
 
@@ -81,6 +93,7 @@ extension SearchViewController: UITextFieldDelegate {
     searchResultTableView.isUserInteractionEnabled = true
     showSearchResultTableView()
     showCampusSegmentedControl()
+    cancelButton.isHidden = false
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
@@ -164,5 +177,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     cell.textLabel?.text = species.commonName
     cell.detailTextLabel?.text = species.botanicalName
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let selectedSpecies = speciesArray[indexPath.row]
+    let campuses = [nil, "Chestnut Hill Campus", "Brighton Campus", "Newton Campus"]
+    let selectedCampusIndex = campusSegmentedControl.selectedSegmentIndex
+    let selectedCampus = campuses[selectedCampusIndex]
+    delegate.speciesFilterSelected(species: selectedSpecies, campus: selectedCampus)
+    searchTextField.text = selectedSpecies.commonName
+    searchTextField.resignFirstResponder()
+    cancelButton.isHidden = false
   }
 }
