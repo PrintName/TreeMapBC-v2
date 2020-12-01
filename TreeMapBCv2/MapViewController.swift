@@ -44,6 +44,14 @@ class MapViewController: UIViewController {
     addKeyboardNotifications()
   }
   
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    searchView.layer.shadowRadius = 4
+    searchView.layer.shadowOpacity = 0.5
+    searchView.layer.shadowColor = UIColor.black.cgColor
+    searchView.layer.shadowOffset = .zero
+  }
+  
   private func configureMapView() {
     mapView.delegate = self
     
@@ -128,6 +136,7 @@ class MapViewController: UIViewController {
     UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
       guard let self = self else { return }
       self.mapView.alpha = 1
+      self.searchView.layer.shadowOpacity = 0.5
     })
   }
   
@@ -136,6 +145,7 @@ class MapViewController: UIViewController {
     UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
       guard let self = self else { return }
       self.mapView.alpha = 0.5
+      self.searchView.layer.shadowOpacity = 0
     })
   }
   

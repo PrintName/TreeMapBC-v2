@@ -47,15 +47,6 @@ class SearchViewController: UIViewController {
   }
   
   private func configureSearchView() {
-    searchViewShadow = UIView(frame: searchFieldView.frame)
-    searchView.addSubview(searchViewShadow)
-    searchView.sendSubviewToBack(searchViewShadow)
-    searchViewShadow.layer.shadowColor = UIColor.black.cgColor
-    searchViewShadow.layer.shadowOpacity = 0.5
-    searchViewShadow.layer.shadowOffset = .zero
-    searchViewShadow.layer.shadowRadius = 4
-    searchViewShadow.layer.shadowPath = UIBezierPath(rect: searchViewShadow.bounds).cgPath
-    
     searchFieldView.layer.shadowColor = UIColor.black.cgColor
     searchFieldView.layer.shadowOpacity = 0.5
     searchFieldView.layer.shadowOffset = .zero
@@ -89,7 +80,6 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    fadeSearchFieldViewShadow()
     searchResultTableView.isUserInteractionEnabled = true
     showSearchResultTableView()
     showCampusSegmentedControl()
@@ -97,7 +87,6 @@ extension SearchViewController: UITextFieldDelegate {
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
-    showSearchFieldViewShadow()
     searchResultTableView.isUserInteractionEnabled = false
     hideSearchResultTableView()
     hideCampusSegmentedControl()
@@ -135,20 +124,6 @@ extension SearchViewController: UITextFieldDelegate {
       guard let self = self else { return }
       self.searchBarViewHeight.constant = 42
       self.view.layoutIfNeeded()
-    })
-  }
-  
-  private func showSearchFieldViewShadow() {
-    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-      guard let self = self else { return }
-      self.searchViewShadow.layer.shadowOpacity = 0.5
-    })
-  }
-  
-  private func fadeSearchFieldViewShadow() {
-    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-      guard let self = self else { return }
-      self.searchViewShadow.layer.shadowOpacity = 0
     })
   }
   
