@@ -26,7 +26,7 @@ class SearchViewController: UIViewController {
   
   weak var delegate: SearchFilterDelegate!
   
-  var searchFieldViewShadow: UIView!
+  var searchViewShadow: UIView!
   
   var speciesArray = [Species]()
   
@@ -47,14 +47,14 @@ class SearchViewController: UIViewController {
   }
   
   private func configureSearchView() {
-    searchFieldViewShadow = UIView(frame: searchFieldView.frame)
-    searchView.addSubview(searchFieldViewShadow)
-    searchView.sendSubviewToBack(searchFieldViewShadow)
-    searchFieldViewShadow.layer.shadowColor = UIColor.black.cgColor
-    searchFieldViewShadow.layer.shadowOpacity = 0.5
-    searchFieldViewShadow.layer.shadowOffset = .zero
-    searchFieldViewShadow.layer.shadowRadius = 4
-    searchFieldViewShadow.layer.shadowPath = UIBezierPath(rect: searchFieldViewShadow.bounds).cgPath
+    searchViewShadow = UIView(frame: searchFieldView.frame)
+    searchView.addSubview(searchViewShadow)
+    searchView.sendSubviewToBack(searchViewShadow)
+    searchViewShadow.layer.shadowColor = UIColor.black.cgColor
+    searchViewShadow.layer.shadowOpacity = 0.5
+    searchViewShadow.layer.shadowOffset = .zero
+    searchViewShadow.layer.shadowRadius = 4
+    searchViewShadow.layer.shadowPath = UIBezierPath(rect: searchViewShadow.bounds).cgPath
     
     searchFieldView.layer.shadowColor = UIColor.black.cgColor
     searchFieldView.layer.shadowOpacity = 0.5
@@ -141,14 +141,14 @@ extension SearchViewController: UITextFieldDelegate {
   private func showSearchFieldViewShadow() {
     UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
       guard let self = self else { return }
-      self.searchFieldViewShadow.layer.shadowOpacity = 0.5
+      self.searchViewShadow.layer.shadowOpacity = 0.5
     })
   }
   
   private func fadeSearchFieldViewShadow() {
     UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
       guard let self = self else { return }
-      self.searchFieldViewShadow.layer.shadowOpacity = 0
+      self.searchViewShadow.layer.shadowOpacity = 0
     })
   }
   
