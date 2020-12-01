@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Poh-QQ-LSh" customClass="PassthroughView" customModule="TreeMapBCv2" customModuleProvider="target">
-                                <rect key="frame" x="20" y="44" width="374" height="200"/>
+                                <rect key="frame" x="15" y="49" width="384" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="4kf-V9-2wB"/>
                                 </constraints>
@@ -32,11 +32,11 @@
                         <constraints>
                             <constraint firstItem="gRr-NI-3jO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2WY-wO-PwT"/>
                             <constraint firstItem="gRr-NI-3jO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ESk-CO-L3Z"/>
-                            <constraint firstItem="Poh-QQ-LSh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Px0-sc-wDg"/>
+                            <constraint firstItem="Poh-QQ-LSh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="Px0-sc-wDg"/>
                             <constraint firstAttribute="bottom" secondItem="gRr-NI-3jO" secondAttribute="bottom" id="VLH-jc-bkh"/>
-                            <constraint firstItem="Poh-QQ-LSh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ly3-Jf-87Y"/>
+                            <constraint firstItem="Poh-QQ-LSh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="ly3-Jf-87Y"/>
                             <constraint firstItem="gRr-NI-3jO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="o9D-8N-rgC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Poh-QQ-LSh" secondAttribute="trailing" constant="20" id="whp-J6-DKi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Poh-QQ-LSh" secondAttribute="trailing" constant="15" id="whp-J6-DKi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -55,14 +55,14 @@
             <objects>
                 <viewController id="7Xe-tF-BOT" customClass="SearchViewController" customModule="TreeMapBCv2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jso-W4-t36" customClass="PassthroughView" customModule="TreeMapBCv2" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDC-DW-LUG">
-                                <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="80"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5Qa-5t-IS6">
-                                        <rect key="frame" x="4" y="48" width="366" height="29"/>
+                                        <rect key="frame" x="4" y="48" width="376" height="29"/>
                                         <color key="backgroundColor" red="0.89661326139999997" green="0.80481809469999999" blue="0.62127214779999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="P8u-IO-xwC"/>
@@ -77,15 +77,15 @@
                                         <color key="selectedSegmentTintColor" red="0.8203918147" green="0.71312297000000002" blue="0.56604801979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t58-J8-MOR">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="42"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="42"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search by species..." textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xaY-oJ-pLn">
-                                                <rect key="frame" x="16" y="0.0" width="318" height="42"/>
+                                                <rect key="frame" x="16" y="0.0" width="328" height="42"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vm-n8-R1Q">
-                                                <rect key="frame" x="334" y="0.0" width="40" height="42"/>
+                                                <rect key="frame" x="344" y="0.0" width="40" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="ANg-nH-Aam"/>
                                                 </constraints>
@@ -127,16 +127,16 @@
                                     <constraint firstItem="5Qa-5t-IS6" firstAttribute="leading" secondItem="IDC-DW-LUG" secondAttribute="leading" constant="4" id="hc6-Yh-9Zb"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DIY-hp-d46">
-                                <rect key="frame" x="0.0" y="100" width="374" height="100"/>
+                            <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DIY-hp-d46">
+                                <rect key="frame" x="0.0" y="100" width="384" height="100"/>
                                 <color key="backgroundColor" red="0.98933217009999996" green="0.93103521290000002" blue="0.75614434129999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SpeciesCell" textLabel="pWt-mY-MdF" detailTextLabel="1Ux-B3-Cdd" style="IBUITableViewCellStyleSubtitle" id="bbf-0d-mYF">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="384" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bbf-0d-mYF" id="oR5-lq-1DQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="47.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pWt-mY-MdF">
@@ -147,7 +147,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Ux-B3-Cdd">
-                                                    <rect key="frame" x="20" y="26" width="40.5" height="13.5"/>
+                                                    <rect key="frame" x="20" y="25" width="40.5" height="13.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
