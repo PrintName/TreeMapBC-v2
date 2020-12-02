@@ -23,7 +23,7 @@
 		9F9C3C64254BBA1D00A9E079 /* BCTrees.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C3C63254BBA1D00A9E079 /* BCTrees.csv */; };
 		9F9C3C66254C6EED00A9E079 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */; };
 		9F9C3C68254C7A7A00A9E079 /* TreeClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C67254C7A7A00A9E079 /* TreeClusterAnnotationView.swift */; };
-		9F9C3C6A254C9DAF00A9E079 /* TreeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */; };
+		9F9C3C6A254C9DAF00A9E079 /* TreeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C69254C9DAE00A9E079 /* TreeData.swift */; };
 		9F9C3C6E254E6E8900A9E079 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C6D254E6E8800A9E079 /* Utils.swift */; };
 		9FE2EC7F2577572100221DFF /* TreeInfo.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9FE2EC7E2577572000221DFF /* TreeInfo.csv */; };
 		9FEB838F25633D16005AFFE7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEB838E25633D16005AFFE7 /* SearchViewController.swift */; };
@@ -50,7 +50,7 @@
 		9F9C3C63254BBA1D00A9E079 /* BCTrees.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BCTrees.csv; sourceTree = "<group>"; };
 		9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		9F9C3C67254C7A7A00A9E079 /* TreeClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeClusterAnnotationView.swift; sourceTree = "<group>"; };
-		9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeLoader.swift; sourceTree = "<group>"; };
+		9F9C3C69254C9DAE00A9E079 /* TreeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeData.swift; sourceTree = "<group>"; };
 		9F9C3C6D254E6E8800A9E079 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		9FE2EC7E2577572000221DFF /* TreeInfo.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TreeInfo.csv; sourceTree = "<group>"; };
 		9FEB838E25633D16005AFFE7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 				9F9C3C6D254E6E8800A9E079 /* Utils.swift */,
 				9F9C3C48254B802A00A9E079 /* AppDelegate.swift */,
 				9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */,
-				9F9C3C69254C9DAE00A9E079 /* TreeLoader.swift */,
+				9F9C3C69254C9DAE00A9E079 /* TreeData.swift */,
 				9F9C3C5F254B8C9400A9E079 /* TreeAnnotation.swift */,
 				9F2D733525590E9200084F46 /* TreeAnnotations.swift */,
 				9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */,
@@ -265,7 +265,7 @@
 				9FEB838F25633D16005AFFE7 /* SearchViewController.swift in Sources */,
 				9F9C3C6E254E6E8900A9E079 /* Utils.swift in Sources */,
 				9F32F4B0255611EA008A8430 /* BottomSheetViewController.swift in Sources */,
-				9F9C3C6A254C9DAF00A9E079 /* TreeLoader.swift in Sources */,
+				9F9C3C6A254C9DAF00A9E079 /* TreeData.swift in Sources */,
 				9F9C3C4D254B802A00A9E079 /* MapViewController.swift in Sources */,
 				9F9C3C49254B802A00A9E079 /* AppDelegate.swift in Sources */,
 				9F9C3C4B254B802A00A9E079 /* SceneDelegate.swift in Sources */,

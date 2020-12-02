@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let defaults = UserDefaults.standard
     let isPreloaded = defaults.bool(forKey: "isPreloaded")
     if !isPreloaded {
-      preloadTreeData()
+      let treeData = TreeData()
+      treeData.preloadTreeData()
       defaults.set(true, forKey: "isPreloaded")
     }
     return true

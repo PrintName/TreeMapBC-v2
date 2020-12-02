@@ -1,5 +1,5 @@
 //
-//  TreeLoader.swift
+//  TreeData.swift
 //  TreeMapBCv2
 //
 //  Created by Allen Li on 10/30/20.
@@ -11,12 +11,13 @@ import CoreData
 import MapKit
 import SwiftCSV
 
-extension UIApplicationDelegate {
-  func preloadTreeData () {
+class TreeData {
+  func preloadTreeData() {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let managedContext = appDelegate.persistentContainer.viewContext
     
-    clearData()
+    clearDataEntity(entityName: "Species")
+    clearDataEntity(entityName: "Tree")
     
     let speciesEntity = NSEntityDescription.entity(forEntityName: "Species", in: managedContext)!
     let treeEntity = NSEntityDescription.entity(forEntityName: "Tree", in: managedContext)!
@@ -60,7 +61,7 @@ extension UIApplicationDelegate {
     }
   }
   
-  func parseBCTreesCSV() -> [(tag: Int, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] {
+  private func parseBCTreesCSV() -> [(tag: Int, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] {
     // Load CSV file into Tree Data Array
     var treeDataArray: [(tag: Int, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] = []
     let filePath = Bundle.main.url(forResource: "BCTrees", withExtension: "csv")! // TODO: Replace with online hosted CSV
@@ -92,11 +93,11 @@ extension UIApplicationDelegate {
     return treeDataArray
   }
   
-  func clearData () {
+  private func clearDataEntity(entityName: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let managedContext = appDelegate.persistentContainer.viewContext
     
-    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Tree")
+    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
     do {
       try managedContext.execute(deleteRequest)
