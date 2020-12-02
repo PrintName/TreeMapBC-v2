@@ -15,6 +15,8 @@ protocol SearchFilterDelegate: class {
 }
 
 class SearchViewController: UIViewController {
+  // MARK: - Properties
+  
   @IBOutlet var searchView: UIView!
   @IBOutlet weak var searchBarView: UIView!
   @IBOutlet weak var searchBarViewHeight: NSLayoutConstraint!
@@ -29,6 +31,8 @@ class SearchViewController: UIViewController {
   var searchViewShadow: UIView!
   
   var speciesArray = [Species]()
+  
+  // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -76,6 +80,8 @@ class SearchViewController: UIViewController {
     searchResultTableView.alpha = 0
     searchResultTableView.isHidden = true
   }
+  
+  // MARK: - Actions
   
   @IBAction func cancelButtonTouched(_ sender: Any) {
     searchTextField.text = ""
@@ -148,6 +154,8 @@ extension SearchViewController: UITextFieldDelegate {
     } catch {}
   }
 }
+
+// MARK: - TableView
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
