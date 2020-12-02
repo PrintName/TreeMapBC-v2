@@ -1340,7 +1340,7 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 2841,42.34397635,-71.15772316,Northern Red Oak,Quercus rubra,Brighton Campus,3,Living,3.7,20,1.2,2.1
 2842,42.34405276,-71.15772587,Northern Red Oak,Quercus rubra,Brighton Campus,3,Living,3.7,20,1.2,2.1
 2843,42.34415689,-71.15770346,Northern Red Oak,Quercus rubra,Brighton Campus,3,Living,3.7,20,1.2,2.1
-2844,42.34399676,-71.15757947,"hackberry, common",Celtis occidentalis,Brighton Campus,4,Living,5.1,38.2,2.2,3.8
+2844,42.34399676,-71.15757947,Common Hackberry,Celtis occidentalis,Brighton Campus,4,Living,5.1,38.2,2.2,3.8
 2845,42.34420774,-71.15767509,Red Maple,Acer rubrum,Brighton Campus,3,Living,3.9,21.4,1.5,2.7
 2846,42.34434767,-71.15762283,Red Maple,Acer rubrum,Brighton Campus,3,Living,3.9,21.4,1.5,2.7
 2847,42.34450739,-71.15760948,Northern Red Oak,Quercus rubra,Brighton Campus,3,Living,3.7,20,1.2,2.1
@@ -1353,9 +1353,9 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 2854,42.34429316,-71.15720177,Pagoda Dogwood,Cornus alternifolia,Brighton Campus,3,Living,3.6,19.6,1.4,2.4
 2855,42.34443242,-71.15731337,White Fir,Abies concolor,Brighton Campus,5,Living,5.1,62.6,2,3.4
 2856,42.34443221,-71.15724471,White Fir,Abies concolor,Brighton Campus,5,Living,5.1,62.6,2,3.4
-2857,42.34421616,-71.15700243,"hackberry, common",Celtis occidentalis,Brighton Campus,5,Living,7,65.5,3.1,5.4
+2857,42.34421616,-71.15700243,Common Hackberry,Celtis occidentalis,Brighton Campus,5,Living,7,65.5,3.1,5.4
 2858,42.34417369,-71.15673735,Swamp White Oak,Quercus bicolor,Brighton Campus,4,Living,5.4,39,1.4,2.4
-2859,42.34412494,-71.15669392,"hackberry, common",Celtis occidentalis,Brighton Campus,6,Living,9.1,101.8,4.2,7.3
+2859,42.34412494,-71.15669392,Common Hackberry,Celtis occidentalis,Brighton Campus,6,Living,9.1,101.8,4.2,7.3
 2860,42.34397444,-71.15669474,American Sweetgum,Liquidambar styraciflua,Brighton Campus,4,Living,3.9,37.9,1.2,2.2
 2861,42.34378189,-71.15672196,Flowering Crabapple,Malus spp.,Brighton Campus,3,Living,3.4,18.4,1.3,2.4
 2862,42.34394607,-71.15664928,Flowering Crabapple,Malus spp.,Brighton Campus,3,Living,3.4,18.4,1.3,2.4
@@ -1369,13 +1369,13 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 2870,42.34369099,-71.15729675,Flowering Crabapple,Malus spp.,Brighton Campus,3,Living,3.4,18.4,1.3,2.4
 2871,42.34371391,-71.15721859,Tulip Tree,Liriodendron tulipifera,Brighton Campus,4,Living,4.3,31.5,2.7,4.7
 2872,42.34362563,-71.15711919,Flowering Crabapple,Malus spp.,Brighton Campus,3,Living,3.4,18.4,1.3,2.4
-2873,42.34361592,-71.15696943,hopAmerican Hornbeam,Ostrya virginiana,Brighton Campus,3,Living,3,16.2,1.4,2.4
+2873,42.34361592,-71.15696943,American Hophornbeam,Ostrya virginiana,Brighton Campus,3,Living,3,16.2,1.4,2.4
 2874,42.3436551,-71.15690679,hopAmerican Hornbeam,Ostrya virginiana,Brighton Campus,3,Living,3,16.2,1.4,2.4
 2875,42.34369437,-71.15687537,hopAmerican Hornbeam,Ostrya virginiana,Brighton Campus,3,Living,3,16.2,1.4,2.4
 2876,42.34369926,-71.15696274,Sugar Maple,Acer saccharum,Brighton Campus,6,Living,11.8,136.5,5,8.7
 2877,42.34385864,-71.15683702,Sugar Maple,Acer saccharum,Brighton Campus,7,Removed,14.4,194.7,6.3,11
 2878,42.3437288,-71.1567753,Flowering Crabapple,Malus spp.,Brighton Campus,3,Living,3.4,18.4,1.3,2.4
-2879,42.34398636,-71.15639177,"hackberry, common",Celtis occidentalis,Brighton Campus,5,Living,7,65.5,3.1,5.4
+2879,42.34398636,-71.15639177,Common Hackberry,Celtis occidentalis,Brighton Campus,5,Living,7,65.5,3.1,5.4
 2880,42.34388227,-71.15642667,Flowering Crabapple,Malus spp.,Brighton Campus,5,Living,6.8,62.3,2.3,4
 2881,42.34384303,-71.15646746,Flowering Dogwood,Cornus florida,Brighton Campus,3,Living,3.6,19.6,1.5,2.6
 2882,42.34376908,-71.15651468,Flowering Dogwood,Cornus florida,Brighton Campus,3,Living,3.6,19.6,1.5,2.6
@@ -1526,8 +1526,8 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 3227,42.34348544,-71.16303876,Pin Oak,Quercus palustris,Brighton Campus,51,Living,27.6,16534.7,29.9,52.4
 3228,42.34352341,-71.16264978,Flowering Dogwood,Cornus florida,Brighton Campus,3,Living,3.6,19.6,1.5,2.6
 3229,42.3426535,-71.16410463,Norway Maple,Acer platanoides,Brighton Campus,18,Living,39.4,1437.7,19.2,33.6
-3230,42.343001,-71.16392312,goldenraintree,Koelreuteria paniculata,Brighton Campus,13,Living,27.1,662.5,10,17.5
-3231,42.3430306,-71.16391631,goldenraintree,Koelreuteria paniculata,Brighton Campus,14,Living,30.1,792.7,10.7,18.9
+3230,42.343001,-71.16392312,Golden Rain Tree,Koelreuteria paniculata,Brighton Campus,13,Living,27.1,662.5,10,17.5
+3231,42.3430306,-71.16391631,Golden Rain Tree,Koelreuteria paniculata,Brighton Campus,14,Living,30.1,792.7,10.7,18.9
 3232,42.34323232,-71.16368233,Northern Red Oak,Quercus rubra,Brighton Campus,38,Living,134.7,9540.1,31.8,55.8
 3233,42.34316529,-71.16355292,Flowering Dogwood,Cornus florida,Brighton Campus,9,Living,15.9,268.3,5.2,9.1
 3234,42.34323569,-71.16348079,Northern Red Oak,Quercus rubra,Brighton Campus,23,Living,65.9,2817,17,29.9
@@ -1773,7 +1773,7 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 3475,42.33253246,-71.17048518,Tree of Heaven,Ailanthus altissima,Chestnut Hill Campus,19,Living,45.8,1628.6,14,24.6
 3476,42.33250235,-71.17046649,Tree of Heaven,Ailanthus altissima,Chestnut Hill Campus,28,Dead,78.9,4115.7,15.3,26.8
 3477,42.33243711,-71.17102924,Star Magnolia,Magnolia stellata,Chestnut Hill Campus,34,Living,104.3,6589,18.9,33.2
-3478,42.33235433,-71.17101573,"baldcypress, common",Taxodium distichum,Chestnut Hill Campus,37,Living,50.4,3717.2,22.8,40
+3478,42.33235433,-71.17101573,Common Bald Cypress,Taxodium distichum,Chestnut Hill Campus,37,Living,50.4,3717.2,22.8,40
 3479,42.3323336,-71.1710019,Kousa Dogwood,Cornus kousa,Chestnut Hill Campus,9,Living,15.9,268.3,5.2,9.2
 3480,42.33230953,-71.17102526,White Mulberry,Morus alba,Chestnut Hill Campus,24,Living,63.6,2851.5,12.6,22.1
 3481,42.3322815,-71.17109168,Flowering Dogwood,Cornus florida,Chestnut Hill Campus,11,Living,20.9,432.9,6.6,11.5
@@ -2425,8 +2425,8 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 1233,42.33355805,-71.175014,Eastern Redcedar,Juniperus virginiana,Chestnut Hill Campus,6,Living,4.7,77,2.7,4.8
 1234,42.33357065,-71.17501239,Eastern Redcedar,Juniperus virginiana,Chestnut Hill Campus,6,Living,4.7,77,2.7,4.8
 1235,42.33372358,-71.17504377,Japanese Maple,Acer palmatum,Chestnut Hill Campus,8,Living,13.2,209.4,4.2,7.4
-1236,42.33383972,-71.17478217,"maple, paperbark",Acer griseum,Chestnut Hill Campus,6,Living,10.2,126,4.2,7.4
-1237,42.33385665,-71.17468545,"maple, paperbark",Acer griseum,Chestnut Hill Campus,4,Living,6.2,50.5,2.3,4.1
+1236,42.33383972,-71.17478217,Paperbark Maple,Acer griseum,Chestnut Hill Campus,6,Living,10.2,126,4.2,7.4
+1237,42.33385665,-71.17468545,Paperbark Maple,Acer griseum,Chestnut Hill Campus,4,Living,6.2,50.5,2.3,4.1
 1238,42.33350444,-71.17459089,Northern Red Oak,Quercus rubra,Chestnut Hill Campus,26,Living,78.5,3794.4,19.6,34.5
 1239,42.33349418,-71.17460793,Black Cherry,Prunus serotina,Chestnut Hill Campus,22,Living,70.5,2858.3,14.8,25.9
 1240,42.33348175,-71.17466977,Eastern Arborvitae,Thuja occidentalis,Chestnut Hill Campus,20,Living,10.8,535.3,8.9,15.6
@@ -2743,7 +2743,7 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 1550,42.33489805,-71.17015553,Norway Maple,Acer platanoides,Chestnut Hill Campus,19,Living,42.2,1624.6,19.8,34.7
 1551,42.33500063,-71.17006226,Kousa Dogwood,Cornus kousa,Chestnut Hill Campus,9,Removed,15.9,268.3,5.2,9.2
 1552,42.33520039,-71.17013683,Japanese Flowering Cherry,Prunus serrulata,Chestnut Hill Campus,11,Removed,24.7,499.6,6.9,12.1
-1553,42.33534789,-71.17012555,"camellia, silky",Stewartia malacodendron,Chestnut Hill Campus,2,Living,2,7.2,0.6,1
+1553,42.33534789,-71.17012555,Silky Camellia,Stewartia malacodendron,Chestnut Hill Campus,2,Living,2,7.2,0.6,1
 1554,42.3354775,-71.16933284,Kousa Dogwood,Cornus kousa,Chestnut Hill Campus,2,Living,2.1,7.4,0.9,1.6
 1555,42.33538084,-71.16926738,Sugar Maple,Acer saccharum,Chestnut Hill Campus,5,Living,9.3,89.7,3.8,6.7
 1556,42.33519403,-71.16921576,Red Maple,Acer rubrum,Chestnut Hill Campus,6,Living,9.8,110.2,4,7
@@ -2946,15 +2946,15 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 1753,42.33376161,-71.16653546,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,13,Living,13.2,332.2,8,14.1
 1754,42.33375916,-71.1665466,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,12,Dead,11.8,274.1,6.9,12
 1755,42.33375236,-71.16647544,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,17,Living,19.3,631.7,12.5,21.9
-1756,42.33368547,-71.16646578,Japanese pagodatree,Styphnolobium japonicum,Chestnut Hill Campus,12,Living,23.8,541.3,3.4,5.9
-1757,42.3336893,-71.16636341,Japanese pagodatree,Styphnolobium japonicum,Chestnut Hill Campus,14,Living,29.5,778,3.4,5.9
+1756,42.33368547,-71.16646578,Japanese Pagoda Tree,Styphnolobium japonicum,Chestnut Hill Campus,12,Living,23.8,541.3,3.4,5.9
+1757,42.3336893,-71.16636341,Japanese Pagoda Tree,Styphnolobium japonicum,Chestnut Hill Campus,14,Living,29.5,778,3.4,5.9
 1758,42.33372888,-71.16635096,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,16,Living,17.7,546.4,11.4,19.9
 1759,42.33373535,-71.16630532,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,11,Living,10.5,222.4,5.8,10.2
 1760,42.33373767,-71.16625079,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,12,Living,11.8,274.1,6.9,12
 1761,42.33374334,-71.16621183,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,11,Living,10.5,222.4,5.8,10.2
 1762,42.33374899,-71.16616952,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,10,Living,9.1,176.8,4.8,8.4
 1763,42.33375383,-71.16612945,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,12,Living,11.8,274.1,6.9,12
-1764,42.33371624,-71.16626203,Japanese pagodatree,Styphnolobium japonicum,Chestnut Hill Campus,12,Living,23.8,541.3,3.4,5.9
+1764,42.33371624,-71.16626203,Japanese Pagoda Tree,Styphnolobium japonicum,Chestnut Hill Campus,12,Living,23.8,541.3,3.4,5.9
 1765,42.3338078,-71.16595538,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,12,Living,11.8,274.1,6.9,12
 1766,42.33382602,-71.1659742,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,12,Living,11.8,274.1,6.9,12
 1767,42.33382429,-71.16594639,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,10,Living,9.1,176.8,4.8,8.4
@@ -3353,7 +3353,7 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 2160,42.33638922,-71.17006802,Flowering Crabapple,Malus spp.,Chestnut Hill Campus,16,Removed,34.7,1027.5,7.8,13.7
 2161,42.33649544,-71.170134,Japanese Maple,Acer palmatum,Chestnut Hill Campus,7,Removed,11.1,154.7,3.4,6
 2162,42.33653385,-71.17014119,Japanese Maple,Acer palmatum,Chestnut Hill Campus,11,Removed,19.7,431.2,7.4,12.9
-2163,42.33649896,-71.17008716,pecan,Carya illinoinensis,Chestnut Hill Campus,20,Removed,59.6,2125.7,12,21
+2163,42.33649896,-71.17008716,Pecan Tree,Carya illinoinensis,Chestnut Hill Campus,20,Removed,59.6,2125.7,12,21
 2164,42.33653832,-71.17042454,Japanese Flowering Cherry,Prunus serrulata,Chestnut Hill Campus,14,Removed,34.8,899.2,9.6,16.8
 2165,42.33638462,-71.17037606,Japanese Flowering Cherry,Prunus serrulata,Chestnut Hill Campus,11,Removed,24.7,499.6,6.9,12.1
 2166,42.33621264,-71.1703326,Japanese Flowering Cherry,Prunus serrulata,Chestnut Hill Campus,16,Removed,42.1,1245,11.1,19.5
@@ -3462,7 +3462,7 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 2369,42.33764,-71.16905325,Pin Oak,Quercus palustris,Chestnut Hill Campus,37,Living,153.2,10385,27.2,47.8
 2370,42.33766759,-71.16905682,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,30,Living,43.2,2449.5,17.7,31
 2371,42.33772799,-71.16907016,Eastern White Pine,Pinus strobus,Chestnut Hill Campus,34,Living,51.6,3311.1,20.1,35.2
-2372,42.33801037,-71.16910046,butternut,Juglans cinerea,Chestnut Hill Campus,18,Living,43.1,1463.2,24.1,42.2
+2372,42.33801037,-71.16910046,Butternut Tree,Juglans cinerea,Chestnut Hill Campus,18,Living,43.1,1463.2,24.1,42.2
 2373,42.33804527,-71.16909036,Pin Oak,Quercus palustris,Chestnut Hill Campus,24,Living,79.6,3499.2,15.6,27.4
 2374,42.33797953,-71.16924434,Black Walnut,Juglans nigra,Chestnut Hill Campus,27,Living,77.1,3918.1,33.7,59.1
 2375,42.33812645,-71.16918906,Black Walnut,Juglans nigra,Chestnut Hill Campus,26,Living,73,3574,32.3,56.6
@@ -3701,7 +3701,7 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 3008,42.33698084,-71.16408333,Northern Red Oak,Quercus rubra,Chestnut Hill Campus,11,Living,23.1,469.4,8.1,14.2
 3009,42.33690623,-71.16405256,Northern Red Oak,Quercus rubra,Chestnut Hill Campus,18,Living,46.5,1552.9,13.7,23.9
 3010,42.33734408,-71.16441041,Pin Oak,Quercus palustris,Chestnut Hill Campus,18,Living,51.5,1698.4,10.6,18.5
-3011,42.33749321,-71.16444772,"elm, Siberian",Ulmus pumila,Chestnut Hill Campus,43,Living,116.8,9487.7,44.7,78.3
+3011,42.33749321,-71.16444772,Siberian Elm,Ulmus pumila,Chestnut Hill Campus,43,Living,116.8,9487.7,44.7,78.3
 3012,42.33777476,-71.1645911,Northern Red Oak,Quercus rubra,Chestnut Hill Campus,16,Living,39.3,1166.5,12.5,21.9
 3013,42.33771594,-71.16468492,Sugar Maple,Acer saccharum,Chestnut Hill Campus,5,Living,9.3,89.7,3.8,6.7
 3014,42.33771117,-71.16480962,Kousa Dogwood,Cornus kousa,Chestnut Hill Campus,3,Living,3.6,19.6,1.4,2.4
@@ -4142,7 +4142,7 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 4149,42.33582822,-71.17214397,Flowering Crabapple,Malus spp.,Chestnut Hill Campus,7,Living,10.8,139.8,3.2,5.7
 4150,42.33600472,-71.17203947,Common Lilac,Syringa vulgaris,Chestnut Hill Campus,4,Living,5,37,0.7,1.2
 4151,42.3360237,-71.17203083,Stump,Stump,Chestnut Hill Campus,32,Stump,98.1,5929.8,16.6,29.1
-4152,42.33625546,-71.17248967,"maple, paperbark",Acer griseum,Chestnut Hill Campus,12,Living,24.4,602.9,12.5,21.9
+4152,42.33625546,-71.17248967,Paperbark Maple,Acer griseum,Chestnut Hill Campus,12,Living,24.4,602.9,12.5,21.9
 4153,42.33634242,-71.17244012,White Spruce,Picea glauca,Chestnut Hill Campus,5,Living,5.8,65,1.8,3.2
 4154,42.33637573,-71.17245489,Japanese Umbrella Pine,Sciadopitys verticillata,Chestnut Hill Campus,4,Living,2.8,25.7,1.4,2.5
 4155,42.33644378,-71.17243746,Japanese Umbrella Pine,Sciadopitys verticillata,Chestnut Hill Campus,4,Living,2.8,25.7,1.4,2.5
@@ -4273,7 +4273,7 @@ TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestr
 4280,42.33682306,-71.17283561,Northern Catalpa,Catalpa speciosa,Chestnut Hill Campus,58,Living,43.4,15947.9,20.8,36.4
 4281,42.3366965,-71.17313886,Norway Maple,Acer platanoides,Chestnut Hill Campus,9,Living,16.4,301.8,8.4,14.7
 4282,42.33677923,-71.17315678,Black Cherry,Prunus serotina,Chestnut Hill Campus,12,Living,29.5,648.3,8.3,14.6
-4283,42.33679637,-71.17313786,butternut,Juglans cinerea,Chestnut Hill Campus,4,Living,5.1,38.3,2.5,4.3
+4283,42.33679637,-71.17313786,Butternut Tree,Juglans cinerea,Chestnut Hill Campus,4,Living,5.1,38.3,2.5,4.3
 4284,42.33711315,-71.17198143,Norway Maple,Acer platanoides,Chestnut Hill Campus,21,Living,48,2036.5,20.6,36.1
 4285,42.33718827,-71.17193903,Callery Pear,Pyrus calleryana,Chestnut Hill Campus,3,Living,3.4,18.4,0.6,1
 4286,42.33723779,-71.17189641,Callery Pear,Pyrus calleryana,Chestnut Hill Campus,3,Living,3.4,18.4,0.6,1
