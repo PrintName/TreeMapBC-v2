@@ -1,4 +1,5 @@
-TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross CarbonSequestration (lb/yr)",Carbon Storage (lb),Pollution Removal (oz/yr),Avoided Runoff (cuft/yr)
+TAG,Latitude,Longitude,COMMON,BOTANICAL,CAMPUS,DBH,STATUS,"Gross Carbon
+Sequestration (lb/yr)",Carbon Storage (lb),Pollution Removal (oz/yr),Avoided Runoff (cuft/yr)
 1,42.3424249,-71.19197443,Tulip Tree,Liriodendron tulipifera,Newton Campus,17,Living,31.5,1008.1,18.8,32.9
 2,42.34227817,-71.19217546,American Beech,Fagus grandifolia,Newton Campus,23,Living,65.7,2997.8,31.8,55.8
 3,42.3423455,-71.19225772,Red Maple,Acer rubrum,Newton Campus,23,Living,60.2,2645.5,17.7,31.1

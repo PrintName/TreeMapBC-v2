@@ -3,6 +3,7 @@
     <entity name="Species" representedClassName="Species" syncable="YES" codeGenerationType="class">
         <attribute name="botanicalName" optional="YES" attributeType="String"/>
         <attribute name="commonName" optional="YES" attributeType="String"/>
+        <attribute name="detail" optional="YES" attributeType="String"/>
         <relationship name="trees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tree" inverseName="species" inverseEntity="Tree"/>
     </entity>
     <entity name="Tree" representedClassName="Tree" syncable="YES" codeGenerationType="class">
@@ -19,7 +20,7 @@
         <relationship name="species" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Species" inverseName="trees" inverseEntity="Species"/>
     </entity>
     <elements>
-        <element name="Species" positionX="-2318.23046875" positionY="1293.19921875" width="128" height="88"/>
+        <element name="Species" positionX="-2318.23046875" positionY="1293.19921875" width="128" height="103"/>
         <element name="Tree" positionX="-2064.7421875" positionY="1252.19140625" width="128" height="208"/>
     </elements>
 </model>

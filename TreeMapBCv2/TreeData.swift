@@ -22,7 +22,9 @@ class TreeData {
     let speciesEntity = NSEntityDescription.entity(forEntityName: "Species", in: managedContext)!
     let treeEntity = NSEntityDescription.entity(forEntityName: "Tree", in: managedContext)!
     
+    let treeDetailDict = parseTreeDetailCSV()
     let treeDataArray = parseBCTreesCSV()
+    
     for treeData in treeDataArray {
       // Tree
       let tree = NSManagedObject(entity: treeEntity, insertInto: managedContext) as! Tree
@@ -51,6 +53,9 @@ class TreeData {
         species = NSManagedObject(entity: speciesEntity, insertInto: managedContext) as! Species
         species.setValue(treeData.commonName, forKey: "commonName")
         species.setValue(treeData.botanicalName, forKey: "botanicalName")
+        if let detail = treeDetailDict[treeData.commonName] {
+          species.setValue(detail, forKey: "detail")
+        }
       }
       species.addToTrees(tree)
     }
@@ -88,9 +93,26 @@ class TreeData {
         }
       }
     } catch {
-      print("\n❗️ERROR: Missing CSV file❗️\n")
+      print("\n❗️ERROR: Missing BC Trees CSV file❗️\n")
     }
     return treeDataArray
+  }
+  
+  private func parseTreeDetailCSV() -> [String: String]  {
+    var treeDetailDict = [String: String]()
+    let filePath = Bundle.main.url(forResource: "TreeDetail", withExtension: "csv")!
+    do {
+      let csvFile: CSV = try CSV(url: filePath)
+      let rows = csvFile.enumeratedRows
+      for row in rows {
+        let commonName = row[0]
+        let detail = row[1]
+        treeDetailDict[commonName] = detail
+      }
+    } catch {
+      print("\n❗️ERROR: Missing Tree Detail CSV file❗️\n")
+    }
+    return treeDetailDict
   }
   
   private func clearDataEntity(entityName: String) {

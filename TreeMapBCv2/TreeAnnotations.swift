@@ -43,10 +43,11 @@ class TreeAnnotations {
         let waterIntercepted = object.value(forKey: "waterIntercepted") as! Double
         
         let species = object.value(forKey: "species") as! Species
-        let commonName = species.commonName!
-        let botanicalName = species.botanicalName!
+        let commonName = species.commonName ?? ""
+        let botanicalName = species.botanicalName ?? ""
+        let detail = species.detail ?? ""
         
-        let treeAnnotation = TreeAnnotation(tag: tag, coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, impact: TreeAnnotation.Impact(carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted))
+        let treeAnnotation = TreeAnnotation(tag: tag, coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, detail: detail, campus: campus, dbh: dbh, impact: TreeAnnotation.Impact(carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted))
         treeAnnotationArray.append(treeAnnotation)
         
         treeImpact.carbonOffset += carbonOffset

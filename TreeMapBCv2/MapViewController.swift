@@ -176,26 +176,28 @@ extension MapViewController: MKMapViewDelegate {
   }
   
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    var title = "Title"
-    var subtitle = "Subtitle"
+    var title: String!
+    var subtitle: String!
+    var detail: String!
     var impact = TreeAnnotation.Impact(carbonOffset: 0, distanceDriven: 0, carbonStorage: 0, pollutionRemoved: 0, waterIntercepted: 0)
     
     if let clusterAnnotation = view.annotation as? ClusterAnnotation {
       view.layer.backgroundColor = .highlightColor
       let treeAnnotations = clusterAnnotation.annotations as! [TreeAnnotation]
-      var treeNameCounts: [String: Int] = [:]
+      var treeAnnotationCounts: [TreeAnnotation: Int] = [:]
       for annotation in treeAnnotations {
         impact.carbonOffset += annotation.impact.carbonOffset
         impact.distanceDriven += annotation.impact.distanceDriven
         impact.carbonStorage += annotation.impact.carbonStorage
         impact.pollutionRemoved += annotation.impact.pollutionRemoved
         impact.waterIntercepted += annotation.impact.waterIntercepted
-        treeNameCounts[annotation.commonName, default: 0] += 1
+        treeAnnotationCounts[annotation, default: 0] += 1
       }
-      let (treeName, _) = treeNameCounts.max(by: { $0.1 < $1.1 })!
-      title = treeName
-      let otherSpeciesCount = treeNameCounts.count - 1
+      let (treeAnnotation, _) = treeAnnotationCounts.max(by: { $0.1 < $1.1 })!
+      title = treeAnnotation.commonName
+      let otherSpeciesCount = treeAnnotationCounts.count - 1
       subtitle = "+ \(otherSpeciesCount) other species"
+      detail = treeAnnotation.detail
     }
     
     if let treeAnnotation = view.annotation as? TreeAnnotation {
@@ -205,11 +207,13 @@ extension MapViewController: MKMapViewDelegate {
       markerView.glyphImageView.tintColor = .white
       title = treeAnnotation.commonName
       subtitle = treeAnnotation.botanicalName
+      detail = treeAnnotation.detail
       impact = treeAnnotation.impact
     }
     
     bottomSheetVC.bottomSheetTitle.text = title
     bottomSheetVC.bottomSheetSubtitle.text = subtitle
+    bottomSheetVC.bottomSheetDetail.text = detail
     setBottomSheetImpact(impact)
    
     UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
@@ -228,6 +232,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     bottomSheetVC.bottomSheetTitle.text = "TreeMap: Boston College"
     bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.array.count) trees"
+    bottomSheetVC.bottomSheetDetail.text = "Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     setBottomSheetImpact(treeAnnotations.impact)
    
    UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
