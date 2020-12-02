@@ -29,6 +29,7 @@ class BottomSheetViewController: UIViewController {
   let partialViewSpacing: CGFloat = UIScreen.main.bounds.height - 165
   
   // MARK: - Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configureBottonSheetView()
