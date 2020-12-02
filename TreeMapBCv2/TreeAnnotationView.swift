@@ -39,7 +39,7 @@ class TreeAnnotationView: MKAnnotationView {
   
   override var annotation: MKAnnotation? {
     willSet {
-      if newValue is TreeAnnotation {
+      if newValue is TreeAnnotation || newValue is MKUserLocation {
         self.displayPriority = .required
       }
     }

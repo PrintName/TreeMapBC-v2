@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 import CoreData
 import Cluster
 
@@ -26,6 +27,8 @@ class MapViewController: UIViewController {
   
   let treeAnnotations = TreeAnnotations()
   
+  var locationManager: CLLocationManager?
+  
   lazy var clusterManager: ClusterManager = { [unowned self] in
     let manager = ClusterManager()
     manager.delegate = self
@@ -40,6 +43,7 @@ class MapViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureMapView()
+    configureLocationManager()
     addBottomSheetView()
     addKeyboardNotifications()
   }
@@ -170,10 +174,16 @@ extension MapViewController: MKMapViewDelegate {
     case is TreeAnnotation:
       annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)!
     default:
-      print("USER")
       return nil
     }
     return annotationView
+  }
+  
+  public func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+    let userLocationView = mapView.view(for: mapView.userLocation)
+    userLocationView?.isUserInteractionEnabled = false
+    userLocationView?.isEnabled = false
+    userLocationView?.canShowCallout = false
   }
   
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -265,5 +275,13 @@ extension MapViewController: SearchFilterDelegate {
   func speciesFilterCanceled() {
     treeAnnotations.createTreeAnnotations(filterCompoundPredicate: nil)
     addTreeAnnotations()
+  }
+}
+
+extension MapViewController: CLLocationManagerDelegate {
+  func configureLocationManager() {
+    locationManager = CLLocationManager()
+    locationManager?.delegate = self
+    locationManager?.requestWhenInUseAuthorization()
   }
 }
