@@ -66,12 +66,12 @@ class MapViewController: UIViewController {
   private func addBottomSheetView() {
     bottomSheetVC = BottomSheetViewController()
     
-    self.addChild(bottomSheetVC)
-    self.view.addSubview(bottomSheetVC.view)
+    addChild(bottomSheetVC)
+    view.addSubview(bottomSheetVC.view)
     
     let height = view.frame.height
     let width  = view.frame.width
-    bottomSheetVC.view.frame = .init(x: 0, y: self.view.frame.maxY, width: width, height: height)
+    bottomSheetVC.view.frame = .init(x: 0, y: view.frame.maxY, width: width, height: height)
   }
   
   override func viewWillAppear(_ animated: Bool) {
