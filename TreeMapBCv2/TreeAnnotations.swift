@@ -30,19 +30,22 @@ class TreeAnnotations {
       let treeObjects = try managedObjectContext.fetch(fetchRequest)
       
       for object in treeObjects {
-        let tag = object.value(forKey: "tag") as! Int
-        let latitude = object.value(forKey: "latitude") as! Double
-        let longitude = object.value(forKey: "longitude") as! Double
+        guard let tag = object.value(forKey: "tag") as? Int,
+        let latitude = object.value(forKey: "latitude") as? Double,
+        let longitude = object.value(forKey: "longitude") as? Double,
+        let campus = object.value(forKey: "campus") as? String,
+        let dbh = object.value(forKey: "dbh") as? Double,
+        let carbonOffset = object.value(forKey: "carbonOffset") as? Double,
+        let distanceDriven = object.value(forKey: "distanceDriven") as? Double,
+        let carbonStorage = object.value(forKey: "carbonStorage") as? Double,
+        let pollutionRemoved = object.value(forKey: "pollutionRemoved") as? Double,
+        let waterIntercepted = object.value(forKey: "waterIntercepted") as? Double,
+        let species = object.value(forKey: "species") as? Species
+        else {
+          print("\n❗️ERROR: Could not decode tree objects❗️\n")
+          return
+        }
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let campus = object.value(forKey: "campus") as! String
-        let dbh = object.value(forKey: "dbh") as! Double
-        let carbonOffset = object.value(forKey: "carbonOffset") as! Double
-        let distanceDriven = object.value(forKey: "distanceDriven") as! Double
-        let carbonStorage = object.value(forKey: "carbonStorage") as! Double
-        let pollutionRemoved = object.value(forKey: "pollutionRemoved") as! Double
-        let waterIntercepted = object.value(forKey: "waterIntercepted") as! Double
-        
-        let species = object.value(forKey: "species") as! Species
         let commonName = species.commonName ?? ""
         let botanicalName = species.botanicalName ?? ""
         let detail = species.detail ?? ""
