@@ -9,6 +9,8 @@
 import UIKit
 
 class BottomSheetViewController: UIViewController {
+  // MARK: - Properties
+  
   @IBOutlet var bottomSheetView: UIView!
   
   @IBOutlet weak var bottomSheetTitle: UILabel!
@@ -26,6 +28,7 @@ class BottomSheetViewController: UIViewController {
   let fullViewSpacing: CGFloat = UIScreen.main.bounds.height - 375
   let partialViewSpacing: CGFloat = UIScreen.main.bounds.height - 165
   
+  // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     configureBottonSheetView()
@@ -65,6 +68,8 @@ class BottomSheetViewController: UIViewController {
     bottomSheetView.layer.shadowRadius = 6
     bottomSheetView.layer.shadowPath = UIBezierPath(rect: bottomSheetView.bounds).cgPath
   }
+  
+  // MARK: - Actions
   
   @IBAction func impactButtonsTouched(_ sender: Any) {
     UIView.animate(withDuration: 0.5, delay: 0.0, options: [.allowUserInteraction], animations: {
