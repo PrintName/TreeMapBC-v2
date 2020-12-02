@@ -151,7 +151,9 @@ extension SearchViewController: UITextFieldDelegate {
         speciesArray = species
         searchResultTableView.reloadData()
       }
-    } catch {}
+    } catch let error as NSError {
+      print("\n❗️ERROR: Could not fetch data❗️\n\(error)\n")
+    }
   }
 }
 

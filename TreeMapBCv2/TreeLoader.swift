@@ -56,7 +56,7 @@ extension UIApplicationDelegate {
     do {
       try managedContext.save()
     } catch let error as NSError {
-      print("❗️ERROR: Could not save❗️\n\(error)")
+      print("\n❗️ERROR: Could not save❗️\n\(error)\n")
     }
   }
   
@@ -87,7 +87,7 @@ extension UIApplicationDelegate {
         }
       }
     } catch {
-      print("❗️ERROR: Missing CSV file❗️")
+      print("\n❗️ERROR: Missing CSV file❗️\n")
     }
     return treeDataArray
   }
@@ -102,7 +102,7 @@ extension UIApplicationDelegate {
       try managedContext.execute(deleteRequest)
       managedContext.reset()
     } catch let error as NSError {
-      print("❗️ERROR: Could not clear data❗️\n\(error)")
+      print("\n❗️ERROR: Could not clear data❗️\n\(error)\n")
     }
   }
 }

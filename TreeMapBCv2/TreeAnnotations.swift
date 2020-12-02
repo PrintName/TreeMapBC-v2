@@ -55,9 +55,8 @@ class TreeAnnotations {
         treeImpact.pollutionRemoved += pollutionRemoved
         treeImpact.waterIntercepted += waterIntercepted
       }
-      
     } catch let error as NSError {
-      print("Could not fetch. \(error), \(error.userInfo)")
+      print("\n❗️ERROR: Could not fetch trees❗️\n\(error)\n")
     }
     
     array = treeAnnotationArray
