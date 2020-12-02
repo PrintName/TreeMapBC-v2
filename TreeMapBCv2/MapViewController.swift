@@ -170,6 +170,7 @@ extension MapViewController: MKMapViewDelegate {
     case is TreeAnnotation:
       annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)!
     default:
+      print("USER")
       return nil
     }
     return annotationView

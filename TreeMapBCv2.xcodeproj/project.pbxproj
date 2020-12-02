@@ -37,7 +37,7 @@
 		9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		9F32F4AF255611EA008A8430 /* BottomSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheet.xib; sourceTree = "<group>"; };
 		9F4D0EDF256825BB000C85F2 /* PassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughView.swift; sourceTree = "<group>"; };
-		9F9C3C45254B802A00A9E079 /* TreeMapBCv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeMapBCv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F9C3C45254B802A00A9E079 /* TreeMapBC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeMapBC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9C3C48254B802A00A9E079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9F9C3C4C254B802A00A9E079 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		9F9C3C46254B802A00A9E079 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9F9C3C45254B802A00A9E079 /* TreeMapBCv2.app */,
+				9F9C3C45254B802A00A9E079 /* TreeMapBC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,9 +145,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9F9C3C44254B802A00A9E079 /* TreeMapBCv2 */ = {
+		9F9C3C44254B802A00A9E079 /* TreeMapBC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9F9C3C5C254B803000A9E079 /* Build configuration list for PBXNativeTarget "TreeMapBCv2" */;
+			buildConfigurationList = 9F9C3C5C254B803000A9E079 /* Build configuration list for PBXNativeTarget "TreeMapBC" */;
 			buildPhases = (
 				5F4E0CC436C484BF1F5B5760 /* [CP] Check Pods Manifest.lock */,
 				9F9C3C41254B802A00A9E079 /* Sources */,
@@ -159,9 +159,9 @@
 			);
 			dependencies = (
 			);
-			name = TreeMapBCv2;
+			name = TreeMapBC;
 			productName = TreeMapBCv2;
-			productReference = 9F9C3C45254B802A00A9E079 /* TreeMapBCv2.app */;
+			productReference = 9F9C3C45254B802A00A9E079 /* TreeMapBC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -192,7 +192,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9F9C3C44254B802A00A9E079 /* TreeMapBCv2 */,
+				9F9C3C44254B802A00A9E079 /* TreeMapBC */,
 			);
 		};
 /* End PBXProject section */
@@ -424,10 +424,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = BC.TreeMapBCv2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = AL.TreeMapBC;
+				PRODUCT_NAME = TreeMapBC;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -443,10 +443,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = BC.TreeMapBCv2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = AL.TreeMapBC;
+				PRODUCT_NAME = TreeMapBC;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -462,7 +462,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9F9C3C5C254B803000A9E079 /* Build configuration list for PBXNativeTarget "TreeMapBCv2" */ = {
+		9F9C3C5C254B803000A9E079 /* Build configuration list for PBXNativeTarget "TreeMapBC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F9C3C5D254B803000A9E079 /* Debug */,

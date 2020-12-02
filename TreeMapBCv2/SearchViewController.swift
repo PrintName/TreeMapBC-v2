@@ -52,6 +52,7 @@ class SearchViewController: UIViewController {
     campusSegmentedControl.setBackgroundImage(clearImage, for: .normal, barMetrics: .default)
     campusSegmentedControl.setBackgroundImage(clearImage, for: .selected, barMetrics: .default)
     campusSegmentedControl.setDividerImage(UIImage(color: .segmentedControlSeparatorColor, size: .init(width: 0.5, height: 1)), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+    campusSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
     campusSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.highlightColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)], for: .selected)
     campusSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.highlightColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)], for: .highlighted)
   }
