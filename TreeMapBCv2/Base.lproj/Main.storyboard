@@ -17,6 +17,7 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satelliteFlyover" showsBuildings="NO" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRr-NI-3jO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="tintColor" red="0.89019607840000003" green="0.39607843139999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </mapView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Poh-QQ-LSh" customClass="PassthroughView" customModule="TreeMapBCv2" customModuleProvider="target">
                                 <rect key="frame" x="15" y="49" width="384" height="200"/>
@@ -73,7 +74,7 @@
                                             <segment title="Brighton"/>
                                             <segment title="Newton"/>
                                         </segments>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.89019607840000003" green="0.39607843139999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="selectedSegmentTintColor" red="0.8203918147" green="0.71312297000000002" blue="0.56604801979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t58-J8-MOR">
@@ -81,6 +82,7 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search by species..." textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xaY-oJ-pLn">
                                                 <rect key="frame" x="16" y="0.0" width="328" height="42"/>
+                                                <color key="tintColor" red="0.89019607840000003" green="0.39607843139999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
@@ -98,7 +100,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.98933217005076146" green="0.93103521286002022" blue="0.75614434128779606" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.9882352941176471" green="0.93103521286002022" blue="0.75614434128779606" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="397-mZ-gIL"/>
                                             <constraint firstAttribute="bottom" secondItem="8Vm-n8-R1Q" secondAttribute="bottom" id="8QG-SI-2bV"/>

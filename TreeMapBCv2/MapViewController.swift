@@ -224,7 +224,7 @@ extension MapViewController: MKMapViewDelegate {
     if let markerView = view as? TreeAnnotationView {
       markerView.backgroundColor = .primaryColor
       markerView.layer.borderColor = .secondaryColor
-      markerView.glyphImageView.tintColor = .secondaryColor
+      markerView.glyphImageView.tintColor = .treeAnnotationColor
     }
     bottomSheetVC.bottomSheetTitle.text = "TreeMap: Boston College"
     bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.array.count) trees"

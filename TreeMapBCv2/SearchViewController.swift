@@ -32,16 +32,22 @@ class SearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    searchTextField.delegate = self
+    configureSearchTextField()
     configureCampusSegmentedControl()
     configureSearchView()
     configureSearchResultTableView()
+  }
+  
+  private func configureSearchTextField() {
+    searchTextField.delegate = self
+    searchTextField.setPlaceholderTextColor(color: .placeholderColor)
   }
   
   private func configureCampusSegmentedControl() {
     let clearImage = UIImage(color: .clear)
     campusSegmentedControl.setBackgroundImage(clearImage, for: .normal, barMetrics: .default)
     campusSegmentedControl.setBackgroundImage(clearImage, for: .selected, barMetrics: .default)
+    campusSegmentedControl.setDividerImage(UIImage(color: .segmentedControlSeparatorColor, size: .init(width: 0.5, height: 1)), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
     campusSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.highlightColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)], for: .selected)
     campusSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.highlightColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)], for: .highlighted)
   }
@@ -64,6 +70,8 @@ class SearchViewController: UIViewController {
     searchResultTableView.layer.cornerRadius = 5
     searchResultTableView.delegate = self
     searchResultTableView.dataSource = self
+    
+    searchResultTableView.separatorColor = .tableSeparatorColor
     
     searchResultTableView.alpha = 0
     searchResultTableView.isHidden = true

@@ -16,7 +16,7 @@ class TreeAnnotationView: MKAnnotationView {
     let glyphImage = UIImage(named: "treeGlyph")!
     let imageView = UIImageView(frame: CGRect(x: 8, y: 8, width: 20, height: 20))
     imageView.image = glyphImage
-    imageView.tintColor = .secondaryColor
+    imageView.tintColor = .treeAnnotationColor
     return imageView
   }()
   
