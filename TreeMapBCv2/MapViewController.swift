@@ -36,7 +36,7 @@ class MapViewController: UIViewController {
     manager.minCountForClustering = 2
     manager.clusterPosition = .nearCenter
     return manager
-    }()
+  }()
   
   // MARK: - Lifecycle
   
@@ -165,6 +165,8 @@ class MapViewController: UIViewController {
   }
 }
 
+// MARK: - MapViewDelegate
+
 extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     let annotationView: MKAnnotationView
@@ -256,6 +258,8 @@ extension MapViewController: MKMapViewDelegate {
   }
 }
 
+// MARK: - ClusterManagerDelegaste
+
 extension MapViewController: ClusterManagerDelegate {
   func cellSize(for zoomLevel: Double) -> Double? {
     return min(220-(zoomLevel*10), 80)
@@ -265,6 +269,8 @@ extension MapViewController: ClusterManagerDelegate {
     return !(annotation is MKUserLocation)
   }
 }
+
+// MARK: - SearchFilterDelegate
 
 extension MapViewController: SearchFilterDelegate {
   func speciesFilterSelected(species: Species, campus: String?) {
@@ -277,6 +283,8 @@ extension MapViewController: SearchFilterDelegate {
     addTreeAnnotations()
   }
 }
+
+// MARK: - LocationManagerDelegate
 
 extension MapViewController: CLLocationManagerDelegate {
   func configureLocationManager() {
