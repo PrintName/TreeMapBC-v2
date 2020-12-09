@@ -64,7 +64,7 @@ class MapViewController: UIViewController {
     mapView.setCamera(mapCamera, animated: false)
     mapView.isPitchEnabled = false
     
-    mapView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 135, right: 0)
+    mapView.layoutMargins.bottom = 165
     
     mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     mapView.register(TreeClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
