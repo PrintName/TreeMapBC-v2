@@ -62,8 +62,9 @@ class MapViewController: UIViewController {
     let initialLocation = CLLocation(latitude: 42.3361, longitude: -71.1677)
     let mapCamera = MKMapCamera(lookingAtCenter: initialLocation.coordinate, fromDistance: 4000, pitch: 22.5, heading: 0)
     mapView.setCamera(mapCamera, animated: false)
-    
     mapView.isPitchEnabled = false
+    
+    mapView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 135, right: 0)
     
     mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     mapView.register(TreeClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
