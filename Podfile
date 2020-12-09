@@ -1,12 +1,12 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'TreeMapBCv2' do
+target 'TreeMapBC' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for TreeMapBCv2
-  pod "SwiftCSV"
-  pod "Cluster"
+  pod 'SwiftCSV'
+  pod 'Cluster', :git => 'https://github.com/PrintName/Cluster.git'
 
 end

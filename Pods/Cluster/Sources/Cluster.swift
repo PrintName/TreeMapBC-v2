@@ -235,10 +235,8 @@ open class ClusterManager {
         - completion: A closure to be executed when the reload finishes. The closure has no return value and takes a single Boolean argument that indicates whether or not the reload actually finished before the completion handler was called.
      */
     open func reload(mapView: MKMapView, completion: @escaping (Bool) -> Void = { finished in }) {
-        let mapBounds = mapView.bounds
         let visibleMapRect = mapView.visibleMapRect
-        let visibleMapRectWidth = visibleMapRect.size.width
-        let zoomScale = Double(mapBounds.width) / visibleMapRectWidth
+        let zoomScale = 100/mapView.camera.altitude
         operationQueue.cancelAllOperations()
         operationQueue.addBlockOperation { [weak self, weak mapView] operation in
             guard let self = self, let mapView = mapView else { return completion(false) }

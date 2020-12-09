@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE75212AF30EF6E720B1FFB7889BDA61"
-               BuildableName = "Pods_TreeMapBCv2.framework"
-               BlueprintName = "Pods-TreeMapBCv2"
+               BlueprintIdentifier = "820869F62EED9AF0F38C732CBE5DE080"
+               BuildableName = "Pods_TreeMapBC.framework"
+               BlueprintName = "Pods-TreeMapBC"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

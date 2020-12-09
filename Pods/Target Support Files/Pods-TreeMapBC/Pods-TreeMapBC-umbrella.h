@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_TreeMapBCv2VersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_TreeMapBCv2VersionString[];
+FOUNDATION_EXPORT double Pods_TreeMapBCVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_TreeMapBCVersionString[];
 

@@ -63,6 +63,8 @@ class MapViewController: UIViewController {
     let mapCamera = MKMapCamera(lookingAtCenter: initialLocation.coordinate, fromDistance: 4000, pitch: 22.5, heading: 0)
     mapView.setCamera(mapCamera, animated: false)
     
+    mapView.isPitchEnabled = false
+    
     mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     mapView.register(TreeClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
   }
@@ -262,7 +264,7 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: ClusterManagerDelegate {
   func cellSize(for zoomLevel: Double) -> Double? {
-    return min(220-(zoomLevel*10), 80)
+    return 40
   }
   
   func shouldClusterAnnotation(_ annotation: MKAnnotation) -> Bool {

@@ -1,6 +1,0 @@
-framework module Pods_TreeMapBCv2 {
-  umbrella header "Pods-TreeMapBCv2-umbrella.h"
-
-  export *
-  module * { export * }
-}

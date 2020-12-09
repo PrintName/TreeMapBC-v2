@@ -1,20 +1,28 @@
 PODS:
   - Cluster (3.0.3)
-  - SwiftCSV (0.5.6)
+  - SwiftCSV (0.6.0)
 
 DEPENDENCIES:
-  - Cluster
+  - Cluster (from `https://github.com/PrintName/Cluster.git`)
   - SwiftCSV
 
 SPEC REPOS:
   trunk:
-    - Cluster
     - SwiftCSV
+
+EXTERNAL SOURCES:
+  Cluster:
+    :git: https://github.com/PrintName/Cluster.git
+
+CHECKOUT OPTIONS:
+  Cluster:
+    :commit: 068fc25f2266212337ad2dd7c02417c3a3c63fcd
+    :git: https://github.com/PrintName/Cluster.git
 
 SPEC CHECKSUMS:
   Cluster: d72510594f60d901905953aafdc811d1888177ae
-  SwiftCSV: efb4a15dd7f2f1212b3d6986f97a3369ff6c5100
+  SwiftCSV: ebc63cacc3820042537288c0cc647946261f7c2c
 
-PODFILE CHECKSUM: cfa5df1e133098643a89e1f7fa1b3b304217657c
+PODFILE CHECKSUM: fa4fb59d87c4ebe9d834a25dd63d4862d7eef6fb
 
 COCOAPODS: 1.9.1
