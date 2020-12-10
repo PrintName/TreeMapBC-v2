@@ -83,7 +83,7 @@
                             <string key="content">Boston College is home to over 100 species of trees, from the Littleleaf Linden to the mighty Sequoia. Each and every tree is crucial in reducing BC's environmental footprint and creating a more sustainable campus.</string>
                             <attributes>
                                 <color key="NSBackgroundColor" red="0.12053999999999999" green="0.12284" blue="0.14130999999999999" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <font key="NSFont" size="14" name="AmericanTypewriter"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.3899999999999999" defaultTabInterval="16.050000000000001" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                     <tabStops>
@@ -168,6 +168,6 @@
     </objects>
     <resources>
         <image name="downArrow" width="13" height="30"/>
-        <image name="notebook" width="1390" height="1952"/>
+        <image name="notebook" width="356" height="500"/>
     </resources>
 </document>
