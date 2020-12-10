@@ -167,7 +167,7 @@
         </view>
     </objects>
     <resources>
-        <image name="downArrow" width="215" height="499"/>
+        <image name="downArrow" width="13" height="30"/>
         <image name="notebook" width="1390" height="1952"/>
     </resources>
 </document>

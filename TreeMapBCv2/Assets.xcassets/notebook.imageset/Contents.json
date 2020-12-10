@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "notebook_page.png 11-39-13-107 2.png",
+      "filename" : "notebook500.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "notebook1000.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "notebook1500.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
