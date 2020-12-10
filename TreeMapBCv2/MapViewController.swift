@@ -258,7 +258,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     bottomSheetVC.bottomSheetTitle.text = "TreeMap: Boston College"
     bottomSheetVC.bottomSheetSubtitle.text = "\(treeAnnotations.array.count) trees"
-    bottomSheetVC.bottomSheetDetail.text = "Boston College is home to over 100 species of trees, from the Littleleaf Linden to the mighty Sequoia. Each and every tree is crucial in reducing BC's environmental footprint and creating a more sustainable campus."
+    bottomSheetVC.bottomSheetDetail.text = "Boston College is home to over 100 species of trees, from the Littleleaf Linden to the mighty Sequoia. Each and every tree is crucial in reducing BC's carbon footprint and creating a more sustainable campus."
     setBottomSheetImpact(treeAnnotations.impact)
    
    UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
