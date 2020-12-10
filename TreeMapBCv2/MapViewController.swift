@@ -192,6 +192,9 @@ extension MapViewController: MKMapViewDelegate {
   }
   
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+    let managedContext = appDelegate.persistentContainer.viewContext
+    
     var title: String!
     var subtitle: String!
     var detail: String!
@@ -200,20 +203,27 @@ extension MapViewController: MKMapViewDelegate {
     if let clusterAnnotation = view.annotation as? ClusterAnnotation {
       view.layer.backgroundColor = .highlightColor
       let treeAnnotations = clusterAnnotation.annotations as! [TreeAnnotation]
-      var treeAnnotationCounts: [TreeAnnotation: Int] = [:]
+      var commonNameCounts: [String: Int] = [:]
       for annotation in treeAnnotations {
         impact.carbonOffset += annotation.impact.carbonOffset
         impact.distanceDriven += annotation.impact.distanceDriven
         impact.carbonStorage += annotation.impact.carbonStorage
         impact.pollutionRemoved += annotation.impact.pollutionRemoved
         impact.waterIntercepted += annotation.impact.waterIntercepted
-        treeAnnotationCounts[annotation, default: 0] += 1
+        commonNameCounts[annotation.commonName, default: 0] += 1
       }
-      let (treeAnnotation, _) = treeAnnotationCounts.max(by: { $0.1 < $1.1 })!
-      title = treeAnnotation.commonName
-      let otherSpeciesCount = treeAnnotationCounts.count - 1
+      let (commonName, _) = commonNameCounts.max(by: { $0.1 < $1.1 })!
+      title = commonName
+      let otherSpeciesCount = commonNameCounts.count - 1
       subtitle = "+ \(otherSpeciesCount) other species"
-      detail = treeAnnotation.detail
+      // Get detail
+      let speciesRequest = NSFetchRequest<NSManagedObject>(entityName: "Species")
+      speciesRequest.predicate = NSPredicate(format: "commonName == %@", commonName)
+      if let fetchedSpecies = try? managedContext.fetch(speciesRequest) {
+        if fetchedSpecies.count > 0, let species = fetchedSpecies[0] as? Species {
+          detail = species.detail
+        }
+      }
     }
     
     if let treeAnnotation = view.annotation as? TreeAnnotation {
