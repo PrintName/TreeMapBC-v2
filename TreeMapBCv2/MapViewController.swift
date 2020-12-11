@@ -171,6 +171,12 @@ class MapViewController: UIViewController {
 // MARK: - MapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
+  func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+    if mapView.mapType != .satelliteFlyover { // Patches rare bug where regular satellite mapView type loads
+      mapView.mapType = .satelliteFlyover
+    }
+  }
+  
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     let annotationView: MKAnnotationView
     switch annotation {
