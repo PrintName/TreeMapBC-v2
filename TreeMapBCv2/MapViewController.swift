@@ -64,6 +64,10 @@ class MapViewController: UIViewController {
     mapView.setCamera(mapCamera, animated: false)
     mapView.isPitchEnabled = false
     
+    if mapView.mapType == .satelliteFlyover {
+      fatalError("Please tell Allen about this error!")
+    }
+    
     mapView.layoutMargins.bottom = 165
     
     mapView.register(TreeAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
