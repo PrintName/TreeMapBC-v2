@@ -64,7 +64,8 @@ class MapViewController: UIViewController {
     mapView.setCamera(mapCamera, animated: false)
     mapView.isPitchEnabled = false
     
-    if mapView.mapType == .satelliteFlyover {
+    if mapView.mapType != .satelliteFlyover {
+      print(mapView.mapType)
       fatalError("Please tell Allen about this error!")
     }
     
