@@ -32,7 +32,7 @@ class MapViewController: UIViewController {
   lazy var clusterManager: ClusterManager = { [unowned self] in
     let manager = ClusterManager()
     manager.delegate = self
-    manager.maxZoomLevel = 18
+    manager.maxZoomLevel = 17
     manager.minCountForClustering = 2
     manager.clusterPosition = .nearCenter
     return manager
@@ -60,7 +60,7 @@ class MapViewController: UIViewController {
     mapView.delegate = self
     
     let initialLocation = CLLocation(latitude: 42.3361, longitude: -71.1677)
-    let mapCamera = MKMapCamera(lookingAtCenter: initialLocation.coordinate, fromDistance: 4000, pitch: 22.5, heading: 0)
+    let mapCamera = MKMapCamera(lookingAtCenter: initialLocation.coordinate, fromDistance: 4000, pitch: 0, heading: 0)
     mapView.setCamera(mapCamera, animated: false)
     mapView.isPitchEnabled = false
     
@@ -171,12 +171,6 @@ class MapViewController: UIViewController {
 // MARK: - MapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
-  func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
-    if mapView.mapType != .satelliteFlyover { // Patches rare bug where regular satellite mapView type loads
-      mapView.mapType = .satelliteFlyover
-    }
-  }
-  
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     let annotationView: MKAnnotationView
     switch annotation {
