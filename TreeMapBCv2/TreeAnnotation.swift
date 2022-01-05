@@ -10,7 +10,6 @@ import Foundation
 import MapKit
 
 class TreeAnnotation: NSObject, MKAnnotation {
-  let tag: Int
   let coordinate: CLLocationCoordinate2D
   let commonName: String
   let botanicalName: String
@@ -27,8 +26,7 @@ class TreeAnnotation: NSObject, MKAnnotation {
     var waterIntercepted: Double = 0
   }
   
-  init(tag: Int, coordinate: CLLocationCoordinate2D, commonName: String, botanicalName: String, detail: String, campus: String, dbh: Double, impact: Impact) {
-    self.tag = tag
+  init(coordinate: CLLocationCoordinate2D, commonName: String, botanicalName: String, detail: String, campus: String, dbh: Double, impact: Impact) {
     self.coordinate = coordinate
     self.commonName = commonName
     self.botanicalName = botanicalName

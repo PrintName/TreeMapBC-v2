@@ -30,8 +30,7 @@ class TreeAnnotations {
       let treeObjects = try managedObjectContext.fetch(fetchRequest)
       
       for object in treeObjects {
-        guard let tag = object.value(forKey: "tag") as? Int,
-        let latitude = object.value(forKey: "latitude") as? Double,
+        guard let latitude = object.value(forKey: "latitude") as? Double,
         let longitude = object.value(forKey: "longitude") as? Double,
         let campus = object.value(forKey: "campus") as? String,
         let dbh = object.value(forKey: "dbh") as? Double,
@@ -50,7 +49,7 @@ class TreeAnnotations {
         let botanicalName = species.botanicalName ?? ""
         let detail = species.detail ?? ""
         
-        let treeAnnotation = TreeAnnotation(tag: tag, coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, detail: detail, campus: campus, dbh: dbh, impact: TreeAnnotation.Impact(carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted))
+        let treeAnnotation = TreeAnnotation(coordinate: coordinate, commonName: commonName, botanicalName: botanicalName, detail: detail, campus: campus, dbh: dbh, impact: TreeAnnotation.Impact(carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted))
         treeAnnotationArray.append(treeAnnotation)
         
         treeImpact.carbonOffset += carbonOffset

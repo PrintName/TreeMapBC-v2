@@ -28,7 +28,6 @@ class TreeData {
     for treeData in treeDataArray {
       // Tree
       let tree = NSManagedObject(entity: treeEntity, insertInto: managedContext) as! Tree
-      tree.setValue(treeData.tag, forKeyPath: "tag")
       tree.setValue(treeData.latitude, forKeyPath: "latitude")
       tree.setValue(treeData.longitude, forKeyPath: "longitude")
       tree.setValue(treeData.campus, forKeyPath: "campus")
@@ -50,7 +49,7 @@ class TreeData {
       }
       // Create new species
       if species == nil {
-        species = NSManagedObject(entity: speciesEntity, insertInto: managedContext) as! Species
+        species = NSManagedObject(entity: speciesEntity, insertInto: managedContext) as? Species
         species.setValue(treeData.commonName, forKey: "commonName")
         species.setValue(treeData.botanicalName, forKey: "botanicalName")
         if let detail = treeDetailDict[treeData.commonName] {
@@ -66,31 +65,27 @@ class TreeData {
     }
   }
   
-  private func parseBCTreesCSV() -> [(tag: Int, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] {
+  private func parseBCTreesCSV() -> [(latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] {
     // Load CSV file into Tree Data Array
-    var treeDataArray: [(tag: Int, latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] = []
+    var treeDataArray: [(latitude: Double, longitude: Double, commonName: String, botanicalName: String, campus: String, dbh: Int, carbonOffset: Double, distanceDriven: Double, carbonStorage: Double, pollutionRemoved: Double, waterIntercepted: Double)] = []
     let filePath = Bundle.main.url(forResource: "BCTrees", withExtension: "csv")! // TODO: Replace with online hosted CSV
     do {
       let csvFile: CSV = try CSV(url: filePath)
       let rows = csvFile.enumeratedRows
       for row in rows {
-        let tag = Int(row[0]) ?? 0
-        let latitude = Double(row[1]) ?? 0.0
-        let longitude = Double(row[2]) ?? 0.0
-        let commonName = row[3]
-        let botanicalName = row[4]
-        let campus = row[5]
-        let dbh = Int(row[6]) ?? 0
-        let status = row[7]
-        let carbonOffset = Double(row[8]) ?? 0
-        let distanceDriven = carbonOffset * 2.475
-        let carbonStorage = Double(row[9]) ?? 0
-        let pollutionRemoved = Double(row[10]) ?? 0
-        let waterIntercepted = (Double(row[11]) ?? 0) * 7.48052
-        if status == "Living" {
-          let treeData = (tag: tag, latitude: latitude, longitude: longitude, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted)
-          treeDataArray.append(treeData)
-        }
+        let latitude = Double(row[0]) ?? 0.0
+        let longitude = Double(row[1]) ?? 0.0
+        let commonName = row[2]
+        let botanicalName = row[3]
+        let campus = row[4]
+        let dbh = Int(row[5]) ?? 0
+        let carbonOffset = Double(row[6]) ?? 0
+        let distanceDriven = carbonOffset * 2.475 // based on average US automobile CO2 data
+        let carbonStorage = Double(row[7]) ?? 0
+        let pollutionRemoved = Double(row[8]) ?? 0
+        let waterIntercepted = (Double(row[9]) ?? 0) * 7.48052 // cuft -> gallon
+        let treeData = (latitude: latitude, longitude: longitude, commonName: commonName, botanicalName: botanicalName, campus: campus, dbh: dbh, carbonOffset: carbonOffset, distanceDriven: distanceDriven, carbonStorage: carbonStorage, pollutionRemoved: pollutionRemoved, waterIntercepted: waterIntercepted)
+        treeDataArray.append(treeData)
       }
     } catch {
       print("\n❗️ERROR: Missing BC Trees CSV file❗️\n")

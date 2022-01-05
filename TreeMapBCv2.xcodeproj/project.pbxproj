@@ -11,6 +11,7 @@
 		9F32F4B0255611EA008A8430 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */; };
 		9F32F4B1255611EA008A8430 /* BottomSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F32F4AF255611EA008A8430 /* BottomSheet.xib */; };
 		9F4D0EE0256825BB000C85F2 /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D0EDF256825BB000C85F2 /* PassthroughView.swift */; };
+		9F5B9CD8278547C00061ABCD /* BCTrees.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9F5B9CD7278547C00061ABCD /* BCTrees.csv */; };
 		9F9C3C49254B802A00A9E079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C48254B802A00A9E079 /* AppDelegate.swift */; };
 		9F9C3C4B254B802A00A9E079 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */; };
 		9F9C3C4D254B802A00A9E079 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C4C254B802A00A9E079 /* MapViewController.swift */; };
@@ -19,7 +20,6 @@
 		9F9C3C55254B803000A9E079 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C3C54254B803000A9E079 /* Assets.xcassets */; };
 		9F9C3C58254B803000A9E079 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C3C56254B803000A9E079 /* LaunchScreen.storyboard */; };
 		9F9C3C60254B8C9400A9E079 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C5F254B8C9400A9E079 /* TreeAnnotation.swift */; };
-		9F9C3C64254BBA1D00A9E079 /* BCTrees.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C3C63254BBA1D00A9E079 /* BCTrees.csv */; };
 		9F9C3C66254C6EED00A9E079 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */; };
 		9F9C3C68254C7A7A00A9E079 /* TreeClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C67254C7A7A00A9E079 /* TreeClusterAnnotationView.swift */; };
 		9F9C3C6A254C9DAF00A9E079 /* TreeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C3C69254C9DAE00A9E079 /* TreeData.swift */; };
@@ -38,6 +38,7 @@
 		9F32F4AE255611EA008A8430 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		9F32F4AF255611EA008A8430 /* BottomSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheet.xib; sourceTree = "<group>"; };
 		9F4D0EDF256825BB000C85F2 /* PassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughView.swift; sourceTree = "<group>"; };
+		9F5B9CD7278547C00061ABCD /* BCTrees.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BCTrees.csv; sourceTree = "<group>"; };
 		9F9C3C45254B802A00A9E079 /* TreeMapBC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeMapBC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9C3C48254B802A00A9E079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F9C3C4A254B802A00A9E079 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		9F9C3C57254B803000A9E079 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F9C3C59254B803000A9E079 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F9C3C5F254B8C9400A9E079 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
-		9F9C3C63254BBA1D00A9E079 /* BCTrees.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BCTrees.csv; sourceTree = "<group>"; };
 		9F9C3C65254C6EED00A9E079 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		9F9C3C67254C7A7A00A9E079 /* TreeClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeClusterAnnotationView.swift; sourceTree = "<group>"; };
 		9F9C3C69254C9DAE00A9E079 /* TreeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeData.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 				9F9C3C54254B803000A9E079 /* Assets.xcassets */,
 				9F9C3C59254B803000A9E079 /* Info.plist */,
 				9FEB839825638294005AFFE7 /* CoreData */,
-				9F9C3C63254BBA1D00A9E079 /* BCTrees.csv */,
+				9F5B9CD7278547C00061ABCD /* BCTrees.csv */,
 				9FE2EC7E2577572000221DFF /* TreeDetail.csv */,
 			);
 			path = TreeMapBCv2;
@@ -207,7 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F9C3C58254B803000A9E079 /* LaunchScreen.storyboard in Resources */,
-				9F9C3C64254BBA1D00A9E079 /* BCTrees.csv in Resources */,
+				9F5B9CD8278547C00061ABCD /* BCTrees.csv in Resources */,
 				9FE2EC7F2577572100221DFF /* TreeDetail.csv in Resources */,
 				9F9C3C55254B803000A9E079 /* Assets.xcassets in Resources */,
 				9F9C3C50254B802A00A9E079 /* Main.storyboard in Resources */,
@@ -424,7 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V27SVLH9G6;
+				DEVELOPMENT_TEAM = RM2YUT3ZSU;
 				INFOPLIST_FILE = TreeMapBCv2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -444,7 +444,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V27SVLH9G6;
+				DEVELOPMENT_TEAM = RM2YUT3ZSU;
 				INFOPLIST_FILE = TreeMapBCv2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

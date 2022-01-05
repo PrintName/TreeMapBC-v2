@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E266" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Species" representedClassName="Species" syncable="YES" codeGenerationType="class">
         <attribute name="botanicalName" optional="YES" attributeType="String"/>
         <attribute name="commonName" optional="YES" attributeType="String"/>
@@ -15,12 +15,11 @@
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="pollutionRemoved" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="tag" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="waterIntercepted" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="species" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Species" inverseName="trees" inverseEntity="Species"/>
     </entity>
     <elements>
         <element name="Species" positionX="-2318.23046875" positionY="1293.19921875" width="128" height="103"/>
-        <element name="Tree" positionX="-2064.7421875" positionY="1252.19140625" width="128" height="208"/>
+        <element name="Tree" positionX="-2064.7421875" positionY="1252.19140625" width="128" height="179"/>
     </elements>
 </model>
